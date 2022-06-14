@@ -1,0 +1,12 @@
+GET http://localhost:3000/routes/employee/user
+
+###
+
+POST http://localhost:3000/routes/employee/user
+Content-Type: application/json
+
+{
+    "name": "Eahsan Ornob11111",
+    "dept": "EEE",
+    "cgpa": "4.00"
+}
