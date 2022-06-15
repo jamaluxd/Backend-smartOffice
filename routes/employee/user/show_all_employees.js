@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const Employee = require("../../../models/employee/user");
+const Employee = require("../../../models/employee/user/create_new_employee");
 
-// get all employee information: 
+// get all employee information:
 router.post("/", (req, res) => {
     Employee.find({}, (err, data) => {
       if (!err) {
@@ -17,4 +17,10 @@ router.post("/", (req, res) => {
     });
   });
 
-  module.exports = router;
+
+
+
+
+
+
+module.exports = router;

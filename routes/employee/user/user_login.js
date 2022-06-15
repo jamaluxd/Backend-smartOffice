@@ -1,21 +1,19 @@
 const express = require("express");
 const router = express.Router();
 
-const Employee = require("../../../models/employee/user/create_new_employee");
+const Employee = require("../../../models/employee/user/user_login");
 
 router.post("/", async (req, res) => {
   const employee = new Employee({
-    name: req.body.name,
-    position: req.body.position,
     email: req.body.email,
-    password: req.body.password,
+    password: req.body.password
   });
   try {
-    const newEmployee = await employee.save();
+    const loginEmployee = await employee.save();
     res.status(200).json({
       code: 200,
-      message: "Employee added successfully",
-      newEmployee: newEmployee,
+      message: "Login successfully",
+      loginEmployee: loginEmployee,
     });
   } catch (err) {
     res.status(400).json({
