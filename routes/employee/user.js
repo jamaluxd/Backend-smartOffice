@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Employee = require("../../models/employee/user");
 
-// get all
+// get all employee information: 
 router.post("/showAllEmployees", (req, res) => {
   Employee.find({}, (err, data) => {
     if (!err) {
