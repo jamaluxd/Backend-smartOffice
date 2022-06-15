@@ -1,12 +1,19 @@
+
 POST http://localhost:3000/routes/employee/user/showAllEmployees
-
-###
-
-POST http://localhost:3000/routes/employee/user/createNewEmployee
 Content-Type: application/json
 
 {
-    "name": "Akash Saha",
+    "isLoggedIn": "1"
+}
+
+###
+
+POST http://localhost:3000/routes/employee/admin/createNewEmployee
+Content-Type: application/json
+
+{
+    "name": "B.M. Nafiz Karim Siddque",
     "position": "Software Engineer",
-    "email": "akash@uxd.co.jp"
+    "email": "nafiz@uxd.co.jp",
+    "password": "12345678"
 }
