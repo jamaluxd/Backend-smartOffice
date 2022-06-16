@@ -12,8 +12,18 @@ POST http://localhost:3000/routes/employee/admin/createNewEmployee
 Content-Type: application/json
 
 {
-    "name": "B.M. Nafiz Karim Siddque",
-    "position": "Software Engineer",
+    "name":"Gopal Kumar Saha",
+    "position":"Software Engineer",
+    "email":"gopal@uxd.co.jp",
+    "password":"12345678"
+}
+
+###
+
+POST http://localhost:3000/routes/employee/user/userLogin
+Content-Type: application/json
+
+{
     "email": "nafiz@uxd.co.jp",
-    "password": "12345678"
+    "password": "123456"
 }

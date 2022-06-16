@@ -1,26 +1,44 @@
 const express = require("express");
 const router = express.Router();
-
-const Employee = require("../../../models/employee/user/create_new_employee");
+const checkLogin = require("../../../middlewares/checkLogin.js");
+const Employee = require("../../../models/employee/employee_schema");
 
 // get all employee information:
-router.post("/", (req, res) => {
-    Employee.find({}, (err, data) => {
-      if (!err) {
-        res.send(data);
-      } else {
-        res.send({
-          code: 400,
-          message: err.message,
-        });
-      }
+// router.post("/", checkLogin, (req, res) => {
+//   Employee.find({}, (err, data) => {
+//     if (!err) {
+//       res.send(data);
+//     } else {
+//       res.send({
+//         code: 400,
+//         message: err.message,
+//       });
+//     }
+//   });
+// });
+
+router.post("/", checkLogin, async (req, res) => {
+  try {
+    const ShowEmployeeList = await Employee.find();
+    if (ShowEmployeeList != null) {
+      res.status(200).json({
+        status: 200,
+        message: "List is found",
+        body: ShowEmployeeList,
+      });
+    } else {
+      res.status(409).json({
+        status: 409,
+        message: "Users not found",
+        body: ShowEmployeeList,
+      });
+    }
+  } catch (err) {
+    res.status(400).json({
+      status: 400,
+      message: err.message,
     });
-  });
-
-
-
-
-
-
+  }
+});
 
 module.exports = router;
