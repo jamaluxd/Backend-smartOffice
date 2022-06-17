@@ -27,7 +27,7 @@ router.post("/", checkLogin, async (req, res) => {
         employee.position = req.body.position;
       }
 
-      const newEmployee = await employee.update();
+      const newEmployee = await employee.updateOne();
       res.status(200).json({
         status: 200,
         message: "Employee updated successfully",
