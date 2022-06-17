@@ -19,6 +19,17 @@ Content-Type: application/json
     "email":"gopal@uxd.co.jp",
     "password":"12345678"
 }
+###
+POST http://localhost:3000/routes/employee/admin/updateEmployee
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hZml6QHV4ZC5jby5qcCIsImlkIjoiNjJhYWYwODZjYTM0YWE5ZjdkYTA4NTViIiwiaWF0IjoxNjU1NDY1MDkxLCJleHAiOjE2NTU0Njg2OTF9.l9kFu7tkhN9EdHQkw24r7k78VZ4v6l07pSwY3OICHG8
+Content-Type: application/json
+
+{
+    "name":"Gopal Kumar Saha",
+    "position":"Software",
+    "email":"gopal@uxd.co.jp",
+    "password":"12345678"
+}
 
 ###
 
