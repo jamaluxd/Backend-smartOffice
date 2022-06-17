@@ -2,15 +2,16 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 
+const checkLogin = require("../../../middlewares/checkLogin.js");
 const Employee = require("../../../models/employee/employee_schema");
 
-router.post("/", async (req, res) => {
+router.post("/", checkLogin, async (req, res) => {
   try {
     const cleckExistingEmployee = await Employee.findOne({
       email: req.body.email,
     });
     if (cleckExistingEmployee == null) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10)
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const employee = new Employee({
         name: req.body.name,
         position: req.body.position,
@@ -24,8 +25,8 @@ router.post("/", async (req, res) => {
         newEmployee: newEmployee,
       });
     } else {
-      res.status(409 ).json({
-        status: 409 ,
+      res.status(409).json({
+        status: 409,
         message: "Email already exist",
       });
     }

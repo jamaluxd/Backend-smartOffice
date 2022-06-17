@@ -3,20 +3,6 @@ const router = express.Router();
 const checkLogin = require("../../../middlewares/checkLogin.js");
 const Employee = require("../../../models/employee/employee_schema");
 
-// get all employee information:
-// router.post("/", checkLogin, (req, res) => {
-//   Employee.find({}, (err, data) => {
-//     if (!err) {
-//       res.send(data);
-//     } else {
-//       res.send({
-//         code: 400,
-//         message: err.message,
-//       });
-//     }
-//   });
-// });
-
 router.post("/", checkLogin, async (req, res) => {
   try {
     const ShowEmployeeList = await Employee.find();
