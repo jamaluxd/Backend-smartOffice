@@ -5,9 +5,9 @@ const checkLogin = (req, res, next) => {
   try {
     const token = authorization.split(" ")[1];
     const decode = jwt.verify(token, process.env.JWT_SECRET);
-    const { email, id } = decode;
-    req.email = email;
+    const { id, admin } = decode;
     req.id = id;
+    req.admin = admin;
     next();
   } catch {
     next("Authentication failure!!!");

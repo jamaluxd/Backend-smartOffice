@@ -1,42 +1,42 @@
-
+# Show all employees 
 POST http://localhost:3000/routes/employee/user/showAllEmployees
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hZml6QHV4ZC5jby5qcCIsImlkIjoiNjJhYWYwODZjYTM0YWE5ZjdkYTA4NTViIiwiaWF0IjoxNjU1NDU5NTAwLCJleHAiOjE2NTU0NjMxMDB9.EII0kbDhipsEJIlf99SytaMBg25OpAKsGNFBH9dVMec
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdvcGFsQHV4ZC5jby5qcCIsImlkIjoiNjJhZmVjM2VkMmVjYWE4YWU0NDczYzNjIiwiYWRtaW4iOnRydWUsImlhdCI6MTY1NTcwMTU1NiwiZXhwIjoxNjU1NzMzOTU2fQ.q7dh7sk8c44U9IvCWkTpacHcJU0PE-qQcT1laR77bpM
 Content-Type: application/json
 
 {
     "isLoggedIn": "1"
 }
 
+# create new employee 
 ###
-
 POST http://localhost:3000/routes/employee/admin/createNewEmployee
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hZml6QHV4ZC5jby5qcCIsImlkIjoiNjJhYWYwODZjYTM0YWE5ZjdkYTA4NTViIiwiaWF0IjoxNjU1NDU5NTAwLCJleHAiOjE2NTU0NjMxMDB9.EII0kbDhipsEJIlf99SytaMBg25OpAKsGNFBH9dVMec
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdvcGFsQHV4ZC5jby5qcCIsImlkIjoiNjJhZmVjM2VkMmVjYWE4YWU0NDczYzNjIiwiYWRtaW4iOnRydWUsImlhdCI6MTY1NTcwMTU1NiwiZXhwIjoxNjU1NzMzOTU2fQ.q7dh7sk8c44U9IvCWkTpacHcJU0PE-qQcT1laR77bpM
 Content-Type: application/json
 
 {
-    "name":"Gopal Kumar Saha",
+    "name":"Jamal Mostafa Eahsan",
     "position":"Software Engineer",
-    "email":"gopal@uxd.co.jp",
-    "password":"12345678"
+    "email":"jamalyyy@uxd.co.jp",
+    "password":"12345678",
+    "admin": true
 }
+
+# Update an Employee 
 ###
-POST http://localhost:3000/routes/employee/admin/updateEmployee
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hZml6QHV4ZC5jby5qcCIsImlkIjoiNjJhYWYwODZjYTM0YWE5ZjdkYTA4NTViIiwiaWF0IjoxNjU1NDY1MDkxLCJleHAiOjE2NTU0Njg2OTF9.l9kFu7tkhN9EdHQkw24r7k78VZ4v6l07pSwY3OICHG8
+POST http://localhost:3000/routes/employee/admin/updateEmployee/62afee11d2ecaa8ae4473c4b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWZlYzNlZDJlY2FhOGFlNDQ3M2MzYyIsImFkbWluIjp0cnVlLCJpYXQiOjE2NTU3MTU4NDMsImV4cCI6MTY1NTc0ODI0M30.RUvOJfhEBoeno80zNWi3GrEc_3M_HU7FF2AE37fF8kI
 Content-Type: application/json
 
-{
-    "name":"Gopal Kumar Saha",
-    "position":"Software",
-    "email":"gopal@uxd.co.jp",
-    "password":"12345678"
+{ 
+    "name":"Jamal Mostafa Eahsan Ornob"
 }
 
 ###
-
+#  Employee Login 
 POST http://localhost:3000/routes/employee/user/userLogin
 Content-Type: application/json
 
 {
-    "email": "nafiz@uxd.co.jp",
+    "email": "gopal@uxd.co.jp",
     "password": "12345678"
 }

@@ -4,8 +4,9 @@ const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const bcrypt = require("bcrypt");
 
-
 dotenv.config();
+
+// Models
 const Employee = require("../../../models/employee/employee_schema");
 
 router.post("/", async (req, res) => {
@@ -24,12 +25,12 @@ router.post("/", async (req, res) => {
 
         const token = jwt.sign(
           {
-            email: loginEmployee.email,
             id: loginEmployee._id,
+            admin: loginEmployee.admin,
           },
           process.env.JWT_SECRET,
           {
-            expiresIn: "1h",
+            expiresIn: "9h",
           }
         );
         res.status(200).json({

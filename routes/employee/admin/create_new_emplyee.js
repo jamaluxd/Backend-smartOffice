@@ -2,10 +2,14 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 
+// Middlewares
 const checkLogin = require("../../../middlewares/checkLogin.js");
+
+// Models
 const Employee = require("../../../models/employee/employee_schema");
 
 router.post("/", checkLogin, async (req, res) => {
+  console.log(req.body);
   try {
     const cleckExistingEmployee = await Employee.findOne({
       email: req.body.email,
@@ -17,6 +21,7 @@ router.post("/", checkLogin, async (req, res) => {
         position: req.body.position,
         email: req.body.email,
         password: hashedPassword,
+        admin: req.body.admin,
       });
       const newEmployee = await employee.save();
       res.status(200).json({
