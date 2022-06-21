@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
+
+// Middlewares
 const checkLogin = require("../../../middlewares/checkLogin.js");
+// Models
 const Employee = require("../../../models/employee/employee_schema");
 
 router.post("/", checkLogin, async (req, res) => {

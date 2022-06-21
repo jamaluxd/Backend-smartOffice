@@ -1,5 +1,5 @@
 const checkIsAdmin = (req, res, next) => {
-  console.log(req.admin);
+  // console.log(req.admin);
   try {
     if (req.admin == true) {
       next();
