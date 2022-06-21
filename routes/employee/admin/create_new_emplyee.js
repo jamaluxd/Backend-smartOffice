@@ -4,11 +4,11 @@ const bcrypt = require("bcrypt");
 
 // Middlewares
 const checkLogin = require("../../../middlewares/checkLogin.js");
-
+const checkAdmin = require("../../../middlewares/checkIsAdmin");
 // Models
 const Employee = require("../../../models/employee/employee_schema");
 
-router.post("/", checkLogin, async (req, res) => {
+router.post("/", checkLogin, checkAdmin, async (req, res) => {
   console.log(req.body);
   try {
     const cleckExistingEmployee = await Employee.findOne({

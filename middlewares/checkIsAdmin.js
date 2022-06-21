@@ -1,7 +1,7 @@
 const checkIsAdmin = (req, res, next) => {
- console.log(req.body);
+  console.log(req.admin);
   try {
-    if (_isAdmin==1) {
+    if (req.admin == true) {
       next();
     } else {
       next("Authentication failure!!!");
@@ -9,6 +9,5 @@ const checkIsAdmin = (req, res, next) => {
   } catch {
     next("Authentication failure!!!");
   }
-
 };
 module.exports = checkIsAdmin;
