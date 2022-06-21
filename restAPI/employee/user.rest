@@ -1,19 +1,42 @@
-
+# Show all employees 
 POST http://localhost:3000/routes/employee/user/showAllEmployees
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdvcGFsQHV4ZC5jby5qcCIsImlkIjoiNjJhZmVjM2VkMmVjYWE4YWU0NDczYzNjIiwiYWRtaW4iOnRydWUsImlhdCI6MTY1NTcwMTU1NiwiZXhwIjoxNjU1NzMzOTU2fQ.q7dh7sk8c44U9IvCWkTpacHcJU0PE-qQcT1laR77bpM
 Content-Type: application/json
 
 {
     "isLoggedIn": "1"
 }
 
+# create new employee 
 ###
-
 POST http://localhost:3000/routes/employee/admin/createNewEmployee
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWZlYzNlZDJlY2FhOGFlNDQ3M2MzYyIsImFkbWluIjp0cnVlLCJpYXQiOjE2NTU3ODM2ODIsImV4cCI6MTY1NTgxNjA4Mn0.pKrv19inUmS4qj9NrMi25Pt7hjTVcaTjisgsVnRz6z0
 Content-Type: application/json
 
 {
-    "name": "B.M. Nafiz Karim Siddque",
-    "position": "Software Engineer",
-    "email": "nafiz@uxd.co.jp",
+    "name":"Jamal Mostafa Eahsan",
+    "position":"Software Engineer",
+    "email":"jamalyyy@uxd.co.jp",
+    "password":"12345678",
+    "admin": true
+}
+
+# Update an Employee 
+###
+POST http://localhost:3000/routes/employee/admin/updateEmployee/62afee11d2ecaa8ae4473c4b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYWZlYzNlZDJlY2FhOGFlNDQ3M2MzYyIsImFkbWluIjp0cnVlLCJpYXQiOjE2NTU3NzczMDMsImV4cCI6MTY1NTgwOTcwM30.kAdrlKnsfFZmS4dyLT600u8AA7N2D71OwL7ygTlUMR4
+Content-Type: application/json
+
+{ 
+    "name":"Jamal Mostafa Eahsan"
+}
+
+###
+#  Employee Login 
+POST http://localhost:3000/routes/employee/user/userLogin
+Content-Type: application/json
+
+{
+    "email": "gopal@uxd.co.jp",
     "password": "12345678"
 }
