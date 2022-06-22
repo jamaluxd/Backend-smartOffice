@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const bcrypt = require("bcrypt");
+const cookie = require("cookie");
 dotenv.config();
 
 // Models
@@ -21,7 +22,6 @@ router.post("/", async (req, res) => {
       );
       if (isValidPassword) {
         // generate token
-
         const token = jwt.sign(
           {
             id: loginEmployee._id,
@@ -32,6 +32,17 @@ router.post("/", async (req, res) => {
             expiresIn: "9h",
           }
         );
+
+        res.setHeader(
+          "Set-Cookie",
+          cookie.serialize("authorization", String(token), {
+            httpOnly: true,
+            maxAge: 60 * 60 * 24 * 7, // 1 week
+            Priority: "high",
+            sameSite: "strict",
+          })
+        );
+
         res.status(200).json({
           status: 200,
           access_token: token,
