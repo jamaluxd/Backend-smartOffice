@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
 
         res.setHeader(
           "Set-Cookie",
-          cookie.serialize("authorization", String(token), {
+          cookie.serialize("authorization", token, {
             httpOnly: true,
             maxAge: 60 * 60 * 24 * 7, // 1 week
             Priority: "high",

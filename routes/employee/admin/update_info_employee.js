@@ -8,7 +8,7 @@ const checkAdmin = require("../../../middlewares/checkIsAdmin");
 // Models
 const Employee = require("../../../models/employee/employee_schema");
 
-router.post("/:id", checkLogin, checkAdmin, async (req, res) => {
+router.post("/:id", checkLogin, async (req, res) => {
   try {
     const newEmployee = await Employee.findByIdAndUpdate(
       req.params.id,

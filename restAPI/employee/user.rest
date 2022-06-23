@@ -2,9 +2,6 @@
 POST http://localhost:3000/routes/employee/user/showAllEmployees
 Content-Type: application/json
 
-{
-    "isLoggedIn": "1"
-}
 
 # create new employee 
 ###
@@ -14,7 +11,7 @@ Content-Type: application/json
 {
     "name":"Jamal Mostafa Eahsan",
     "position":"Software Engineer",
-    "email":"jamalyyy@uxd.co.jp",
+    "email":"jamal@uxd.co.jp",
     "password":"12345678",
     "admin": true
 }

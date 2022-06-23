@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
-const bcrypt = require("bcrypt");
 const cookie = require("cookie");
 dotenv.config();
 
+// Middlewares
+const checkLogin = require("../../../middlewares/checkLogin.js");
 // Models
 const Employee = require("../../../models/employee/employee_schema");
 
-router.post("/", async (req, res) => {
+router.post("/", checkLogin, async (req, res) => {
   try {
     // set "authorization" cookie
     res.setHeader(
