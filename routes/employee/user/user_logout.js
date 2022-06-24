@@ -18,8 +18,8 @@ router.post("/", checkLogin, async (req, res) => {
         httpOnly: true,
         // secure: process.env.NODE_ENV !=="development",
         expires: new Date(0),
-        Priority: "high",
-        sameSite: "strict",
+        // Priority: "high",
+        // sameSite: "strict",
         // path: "/",
       })
     );
