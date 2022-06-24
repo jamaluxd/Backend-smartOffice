@@ -9,9 +9,9 @@ POST http://localhost:3000/routes/employee/user/createNewEmployee
 Content-Type: application/json
 
 {
-    "name":"Rahiful Mostafa Eahsan",
+    "name":"Jamal Mostafa Eahsan",
     "position":"Software Engineer",
-    "email":"rahiful@uxd.co.jp",
+    "email":"Jamal@uxd.co.jp",
     "password":"12345678",
     "admin": true
 }
