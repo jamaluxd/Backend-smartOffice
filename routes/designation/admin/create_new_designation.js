@@ -6,33 +6,30 @@ const bcrypt = require("bcrypt");
 const checkLogin = require("../../../middlewares/checkLogin.js");
 const checkAdmin = require("../../../middlewares/checkIsAdmin.js");
 // Models
-const Employee = require("../../../models/employee_schema");
+const Designation = require("../../../models/designation_schema");
 
 router.post("/", checkLogin, checkAdmin, async (req, res) => {
   console.log(req.body);
   try {
-    const cleckExistingEmployee = await Employee.findOne({
-      email: req.body.email,
+    const cleckExistingTitle = await Designation.findOne({
+      title: req.body.title,
     });
-    if (cleckExistingEmployee == null) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      const employee = new Employee({
-        name: req.body.name,
-        position: req.body.position,
-        email: req.body.email,
-        password: hashedPassword,
-        admin: req.body.admin,
+    if (cleckExistingTitle == null) {
+      const designation = new Designation({
+        title: req.body.title,
+        rank: req.body.rank,
+        active_status: req.body.active_status,
       });
-      const newEmployee = await employee.save();
+      const newDesignation = await designation.save();
       res.status(200).json({
         status: 200,
-        message: "Employee added successfully",
-        newEmployee: newEmployee,
+        message: "Designation added successfully",
+        newDesignation: newDesignation,
       });
     } else {
       res.status(409).json({
         status: 409,
-        message: "Email already exist",
+        message: "Designation already exist",
       });
     }
   } catch (err) {

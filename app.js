@@ -22,8 +22,9 @@ db.once("open", () => console.log("Conntected to Database"));
 
 // Routes
 // Admin
-const createNewemployeeRouter = require("./routes/employee/admin/create_new_emplyee");
+const createNewEmployeeRouter = require("./routes/employee/admin/create_new_emplyee");
 const updateEmployeeRouter = require("./routes/employee/admin/update_info_employee");
+const createNewDesignationRouter = require("./routes/designation/admin/create_new_designation");
 // User
 const showAllemployeesRouter = require("./routes/employee/user/show_all_employees");
 const userLoginRouter = require("./routes/employee/user/user_login");
@@ -31,8 +32,9 @@ const userLogoutRouter = require("./routes/employee/user/user_logout");
 
 // API Links
 // Admin
-app.use("/routes/employee/user/createNewEmployee", createNewemployeeRouter);
-app.use("/routes/employee/user/updateEmployee", updateEmployeeRouter);
+app.use("/routes/employee/admin/createNewEmployee", createNewEmployeeRouter);
+app.use("/routes/employee/admin/updateEmployee", updateEmployeeRouter);
+app.use("/routes/designation/admin/createNewDesignation", createNewDesignationRouter);
 // User
 app.use("/routes/employee/user/showAllEmployees", showAllemployeesRouter);
 app.use("/routes/employee/user/userLogin", userLoginRouter);

@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 // Middlewares
 const checkLogin = require("../../../middlewares/checkLogin.js");
 // Models
-const Employee = require("../../../models/employee/employee_schema");
+const Employee = require("../../../models/employee_schema");
 
 router.post("/", checkLogin, async (req, res) => {
   try {

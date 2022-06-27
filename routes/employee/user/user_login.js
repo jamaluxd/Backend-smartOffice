@@ -3,11 +3,10 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const bcrypt = require("bcrypt");
-const cookie = require("cookie");
 dotenv.config();
 
 // Models
-const Employee = require("../../../models/employee/employee_schema");
+const Employee = require("../../../models/employee_schema");
 
 router.post("/", async (req, res) => {
   try {
@@ -33,15 +32,13 @@ router.post("/", async (req, res) => {
           }
         );
 
-        res.setHeader(
-          "Set-Cookie",
-          cookie.serialize("authorization", token, {
-            httpOnly: true,
-            maxAge: 60 * 60 * 24 * 7, // 1 week
-            // Priority: "high",
-            // sameSite: "strict",
-          })
-        );
+        res.cookie("authorization", token, {
+          httpOnly: true,
+          maxAge: 1000 * 60 * 60,
+          sameSite: "strict",
+          secure: process.env.NODE_ENV === "production",
+          path: "/",
+        });
 
         res.status(200).json({
           status: 200,
