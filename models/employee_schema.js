@@ -6,8 +6,13 @@ const EmployeeSchema = new mongoose.Schema({
     required: true,
   },
 
-  position: {
-    type: String,
+  designation_id: {
+    type: Boolean,
+    required: true,
+  },
+
+  department_id: {
+    type: Boolean,
     required: true,
   },
 
@@ -22,6 +27,11 @@ const EmployeeSchema = new mongoose.Schema({
   },
 
   admin: {
+    type: Boolean,
+    required: true,
+  },
+
+  active_status: {
     type: Boolean,
     required: true,
   },

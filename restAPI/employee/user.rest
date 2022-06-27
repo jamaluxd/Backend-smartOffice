@@ -5,7 +5,7 @@ Content-Type: application/json
 ###
 # create new employee 
 
-POST http://localhost:3000/routes/employee/user/createNewEmployee
+POST http://localhost:3000/routes/employee/admin/createNewEmployee
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 # Update an Employee 
 ###
-POST http://localhost:3000/routes/employee/user/updateEmployee/62afee11d2ecaa8ae4473c4b
+POST http://localhost:3000/routes/employee/admin/updateEmployee/62afee11d2ecaa8ae4473c4b
 Content-Type: application/json
 
 { 
@@ -40,4 +40,14 @@ Content-Type: application/json
 POST http://localhost:3000/routes/employee/user/userLogout
 Content-Type: application/json
 
+###
 
+#  Create Designation 
+POST http://localhost:3000/routes/designation/admin/createNewDesignation
+Content-Type: application/json
+
+{
+    "title": "Leader of Software Engineers",
+    "rank": "11",
+    "active_status": true
+}

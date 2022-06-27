@@ -6,18 +6,18 @@ const bcrypt = require("bcrypt");
 const checkLogin = require("../../../middlewares/checkLogin.js");
 const checkAdmin = require("../../../middlewares/checkIsAdmin.js");
 // Models
-const Employee = require("../../../models/employee_schema");
+const Designation = require("../../../models/designation_schema");
 
 router.post("/:id", checkLogin, checkAdmin, async (req, res) => {
   try {
-    const newEmployee = await Employee.findByIdAndUpdate(
+    const updateDesignation = await Designation.findByIdAndUpdate(
       req.params.id,
       req.body
     );
     res.status(200).json({
       status: 200,
-      message: "Employee updated successfully",
-      newEmployee: newEmployee,
+      message: "Designation updated successfully",
+      updateDesignation: updateDesignation,
     });
   } catch (err) {
     res.status(400).json({
