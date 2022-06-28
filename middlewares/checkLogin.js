@@ -14,7 +14,7 @@ const checkLoginNew = async (req, res, next) => {
       const { id, admin } = decode;
       req.id = id;
       req.admin = admin;
-      console.log(id);
+      // console.log(id);
       next();
     }
   } catch {

@@ -18,10 +18,12 @@ router.post("/", checkLogin, checkAdmin, async (req, res) => {
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const employee = new Employee({
         name: req.body.name,
-        position: req.body.position,
+        department_id: req.body.department_id,
+        designation_id: req.body.designation_id,
         email: req.body.email,
         password: hashedPassword,
         admin: req.body.admin,
+        active_status: true,
       });
       const newEmployee = await employee.save();
       res.status(200).json({
