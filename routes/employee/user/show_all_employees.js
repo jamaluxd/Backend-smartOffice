@@ -10,7 +10,7 @@ const Employee = require("../../../models/employee_schema");
 router.post("/", checkLogin, async (req, res) => {
   try {
     const ShowEmployeeList = await Employee.find();
-    // console.log(ShowEmployeeList);
+    console.log(ShowEmployeeList);
     if (ShowEmployeeList != null) {
       res.status(200).json({
         status: 200,
