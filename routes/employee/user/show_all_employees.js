@@ -5,12 +5,28 @@ const bcrypt = require("bcrypt");
 // Middlewares
 const checkLogin = require("../../../middlewares/checkLogin.js");
 // Models
-const Employee = require("../../../models/employee_schema");
+const Employee = require("../../../models/employee_schema.js");
+const Department = require("../../../models/department_schema.js");
+const Designation = require("../../../models/designation_schema.js");
 
 router.post("/", checkLogin, async (req, res) => {
+  let employees = [];
   try {
     const ShowEmployeeList = await Employee.find();
-    console.log(ShowEmployeeList);
+
+    for (let i = 0; i < ShowEmployeeList.length; i++) {
+      const findDepartmentNameById = await Department.findById(
+        ShowEmployeeList[i].department_id,
+        "title"
+      );
+      ShowEmployeeList[i].department = findDepartmentNameById.title;
+      const findDesignationNameById = await Designation.findById(
+        ShowEmployeeList[i].designation_id,
+        "title"
+      );
+      ShowEmployeeList[i].designation = findDesignationNameById.title;
+    }
+
     if (ShowEmployeeList != null) {
       res.status(200).json({
         status: 200,
