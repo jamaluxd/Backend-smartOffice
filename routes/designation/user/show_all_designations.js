@@ -1,27 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
 
 // Middlewares
 const checkLogin = require("../../../middlewares/checkLogin.js");
 // Models
-const Employee = require("../../../models/employee_schema");
+const Designation = require("../../../models/designation_schema.js");
 
 router.post("/", checkLogin, async (req, res) => {
   try {
-    const ShowEmployeeList = await Employee.find();
-    // console.log(ShowEmployeeList);
-    if (ShowEmployeeList != null) {
+    const ShowDesignationList = await Designation.find();
+    if (ShowDesignationList != null) {
       res.status(200).json({
         status: 200,
         message: "List is found",
-        body: ShowEmployeeList,
+        body: ShowDesignationList,
       });
     } else {
       res.status(409).json({
         status: 409,
-        message: "Users not found",
-        body: ShowEmployeeList,
+        message: "No Designation found",
+        body: null,
       });
     }
   } catch (err) {

@@ -22,22 +22,29 @@ db.once("open", () => console.log("Conntected to Database"));
 
 // Routes
 // Admin
-const createNewEmployeeRouter = require("./routes/employee/admin/create_new_emplyee");
-const updateEmployeeRouter = require("./routes/employee/admin/update_info_employee");
-const createNewDesignationRouter = require("./routes/designation/admin/create_new_designation");
+const createNewEmployeeRouter = require("./routes/employee/admin/create_new_emplyee.js");
+const updateEmployeeRouter = require("./routes/employee/admin/update_info_employee.js");
+const createNewDesignationRouter = require("./routes/designation/admin/create_new_designation.js");
+const createNewDepartmentRouter = require("./routes/department/admin/create_new_department.js");
 // User
-const showAllemployeesRouter = require("./routes/employee/user/show_all_employees");
-const userLoginRouter = require("./routes/employee/user/user_login");
-const userLogoutRouter = require("./routes/employee/user/user_logout");
+const showAllemployeesRouter = require("./routes/employee/user/show_all_employees.js");
+const userLoginRouter = require("./routes/employee/user/user_login.js");
+const userLogoutRouter = require("./routes/employee/user/user_logout.js");
+const showAllDesignationsRouter = require("./routes/designation/user/show_all_designations.js");
+const showAllDepartmentsRouter = require("./routes/department/user/show_all_departments.js");
 
 // API Links
 // Admin
 app.use("/routes/employee/admin/createNewEmployee", createNewEmployeeRouter);
 app.use("/routes/employee/admin/updateEmployee", updateEmployeeRouter);
 app.use("/routes/designation/admin/createNewDesignation", createNewDesignationRouter);
+app.use("/routes/department/admin/createNewDepartment", createNewDepartmentRouter);
+
 // User
 app.use("/routes/employee/user/showAllEmployees", showAllemployeesRouter);
 app.use("/routes/employee/user/userLogin", userLoginRouter);
 app.use("/routes/employee/user/userLogout", userLogoutRouter);
+app.use("/routes/designation/user/showAllDesignations", showAllDesignationsRouter);
+app.use("/routes/department/user/showAllDepartments", showAllDepartmentsRouter);
 
 app.listen(process.env.PORT, () => console.log("Server Started"));

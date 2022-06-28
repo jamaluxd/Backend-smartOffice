@@ -5,14 +5,14 @@ const EmployeeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
-  designation_id: {
-    type: Boolean,
+  
+  department_id: {
+    type: String,
     required: true,
   },
 
-  department_id: {
-    type: Boolean,
+  designation_id: {
+    type: String,
     required: true,
   },
 

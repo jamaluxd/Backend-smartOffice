@@ -51,3 +51,10 @@ Content-Type: application/json
     "rank": "11",
     "active_status": true
 }
+
+
+
+###
+# Show all designations
+POST http://localhost:3000/routes/designation/user/showAllDesignations
+Content-Type: application/json
