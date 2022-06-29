@@ -11,9 +11,19 @@ const EmployeeSchema = new mongoose.Schema({
     required: true,
   },
 
+  department: {
+    type: String,
+    required: false,
+  },
+
   designation_id: {
     type: String,
     required: true,
+  },
+
+  designation: {
+    type: String,
+    required: false,
   },
 
   email: {
