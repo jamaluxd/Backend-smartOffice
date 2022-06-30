@@ -7,20 +7,21 @@ dotenv.config();
 
 // Models
 const Employee = require("../../../models/employee_schema");
+const Department = require("../../../models/department_schema.js");
+const Designation = require("../../../models/designation_schema.js");
 
 router.post("/", async (req, res) => {
   try {
     const loginEmployee = await Employee.findOne({
       email: req.body.email,
     });
-    // console.log(loginEmployee);
     if (loginEmployee != null) {
       const isValidPassword = await bcrypt.compare(
         req.body.password,
         loginEmployee.password
       );
       if (isValidPassword) {
-        // generate token
+        // generate JWT token
         const token = jwt.sign(
           {
             id: loginEmployee._id,
@@ -31,7 +32,7 @@ router.post("/", async (req, res) => {
             expiresIn: "9h",
           }
         );
-
+        // set authorization cookie
         res.cookie("authorization", token, {
           httpOnly: true,
           maxAge: 1000 * 60 * 60,
@@ -40,9 +41,21 @@ router.post("/", async (req, res) => {
           path: "/",
         });
 
+        const findDepartmentTitleById = await Department.findById(
+          loginEmployee.department_id,
+          "title"
+        );
+        loginEmployee.department = findDepartmentTitleById.title;
+
+        const findDesignationTitleById = await Designation.findById(
+          loginEmployee.designation_id,
+          "title"
+        );
+        loginEmployee.designation = findDesignationTitleById.title;
+
         res.status(200).json({
           status: 200,
-          access_token: token,
+          // access_token: token,
           message: "Login successfully",
           body: loginEmployee,
         });
