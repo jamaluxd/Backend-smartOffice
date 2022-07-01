@@ -9,7 +9,6 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
-
 // connect to the Database
 mongoose.connect(process.env.Mongo_URL, {
   useNewUrlParser: true,
