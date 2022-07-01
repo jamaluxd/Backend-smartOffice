@@ -38,27 +38,27 @@ const viewEmployeeProfileRouter = require("./api/routes/employee/user/view_user_
 
 // API Links
 // Admin
-app.use("/routes/employee/admin/createNewEmployee", createNewEmployeeRouter);
-app.use("/routes/employee/admin/updateEmployee", updateEmployeeRouter);
+app.use("/api/routes/employee/admin/createNewEmployee", createNewEmployeeRouter);
+app.use("/api/routes/employee/admin/updateEmployee", updateEmployeeRouter);
 app.use(
-  "/routes/designation/admin/createNewDesignation",
+  "/api/routes/designation/admin/createNewDesignation",
   createNewDesignationRouter
 );
 app.use(
-  "/routes/department/admin/createNewDepartment",
+  "/api/routes/department/admin/createNewDepartment",
   createNewDepartmentRouter
 );
-app.use("/routes/designation/admin/updateDesignation", updateDesignationRouter);
-app.use("/routes/department/admin/updateDepartment", updateDepartmentRouter);
+app.use("/api/routes/designation/admin/updateDesignation", updateDesignationRouter);
+app.use("/api/routes/department/admin/updateDepartment", updateDepartmentRouter);
 // User
-app.use("/routes/employee/user/showAllEmployees", showAllemployeesRouter);
-app.use("/routes/employee/user/userLogin", userLoginRouter);
-app.use("/routes/employee/user/userLogout", userLogoutRouter);
+app.use("/api/routes/employee/user/showAllEmployees", showAllemployeesRouter);
+app.use("/api/routes/employee/user/userLogin", userLoginRouter);
+app.use("/api/routes/employee/user/userLogout", userLogoutRouter);
 app.use(
-  "/routes/designation/user/showAllDesignations",
+  "/api/routes/designation/user/showAllDesignations",
   showAllDesignationsRouter
 );
-app.use("/routes/department/user/showAllDepartments", showAllDepartmentsRouter);
-app.use("/routes/employee/user/viewUserProfile", viewEmployeeProfileRouter);
+app.use("/api/routes/department/user/showAllDepartments", showAllDepartmentsRouter);
+app.use("/api/routes/employee/user/viewUserProfile", viewEmployeeProfileRouter);
 
 app.listen(process.env.PORT, () => console.log("Server Started"));
