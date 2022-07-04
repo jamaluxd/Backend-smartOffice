@@ -19,7 +19,7 @@ const db = mongoose.connection;
 db.on("error", (error) => console.log(error));
 db.once("open", () => console.log("Conntected to Database"));
 
-// Routes
+// Requires
 // Admin
 const createNewEmployeeRouter = require("./api/routes/employee/admin/create_new_emplyee.js");
 const updateEmployeeRouter = require("./api/routes/employee/admin/update_info_employee.js");
@@ -28,6 +28,7 @@ const createNewDepartmentRouter = require("./api/routes/department/admin/create_
 const updateDesignationRouter = require("./api/routes/designation/admin/update_a_designation.js");
 const updateDepartmentRouter = require("./api/routes/department/admin/update_a_department.js");
 const createNewModuleRouter= require("./api/routes/module/admin/create_new_module.js");
+const createNewRoleRouter= require("./api/routes/role/admin/create_new_role.js");
 // User
 const showAllemployeesRouter = require("./api/routes/employee/user/show_all_employees.js");
 const userLoginRouter = require("./api/routes/employee/user/user_login.js");
@@ -36,6 +37,7 @@ const showAllDesignationsRouter = require("./api/routes/designation/user/show_al
 const showAllDepartmentsRouter = require("./api/routes/department/user/show_all_departments.js");
 const viewEmployeeProfileRouter = require("./api/routes/employee/user/view_user_profile.js");
 const showAllModulesRouter= require("./api/routes/module/user/show_all_modules.js");
+const showAllRolesForselectedModuleRouter= require("./api/routes/module/user/show_all_modules.js");
 
 // API Links
 // Admin
@@ -51,7 +53,8 @@ app.use(
 );
 app.use("/api/routes/designation/admin/updateDesignation", updateDesignationRouter);
 app.use("/api/routes/department/admin/updateDepartment", updateDepartmentRouter);
-app.use("/api/routes/module/user/createModule", createNewModuleRouter);
+app.use("/api/routes/module/admin/createNewModule", createNewModuleRouter);
+app.use("/api/routes/role/admin/createNewRole", createNewRoleRouter);
 
 // User
 app.use("/api/routes/employee/user/showAllEmployees", showAllemployeesRouter);

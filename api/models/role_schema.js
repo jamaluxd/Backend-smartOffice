@@ -5,7 +5,7 @@ const RoleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  c: {
+  module_id: {
     type: String,
     required: true,
   },
