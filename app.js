@@ -37,7 +37,7 @@ const showAllDesignationsRouter = require("./api/routes/designation/user/show_al
 const showAllDepartmentsRouter = require("./api/routes/department/user/show_all_departments.js");
 const viewEmployeeProfileRouter = require("./api/routes/employee/user/view_user_profile.js");
 const showAllModulesRouter= require("./api/routes/module/user/show_all_modules.js");
-const showAllRolesForselectedModuleRouter= require("./api/routes/module/user/show_all_modules.js");
+const showAllRolesForselectedModuleRouter= require("./api/routes/role/user/show_all_roles_for_selected_module.js");
 
 // API Links
 // Admin
@@ -67,6 +67,7 @@ app.use(
 app.use("/api/routes/department/user/showAllDepartments", showAllDepartmentsRouter);
 app.use("/api/routes/employee/user/viewUserProfile", viewEmployeeProfileRouter);
 app.use("/api/routes/module/user/showAllModules", showAllModulesRouter);
+app.use("/api/routes/role/user/showAllRolesForSelectedModule", showAllRolesForselectedModuleRouter);
 
 
 
