@@ -11,6 +11,7 @@ router.post("/", checkLogin, async (req, res) => {
     const ShowList = await Role.find({
       module_id: req.body.module_id,
     });
+
     if (ShowList != null) {
       res.status(200).json({
         status: 200,
@@ -33,3 +34,4 @@ router.post("/", checkLogin, async (req, res) => {
 });
 
 module.exports = router;
+
