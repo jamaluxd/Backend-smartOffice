@@ -17,12 +17,13 @@ router.post(
   async (req, res) => {
     try {
       const cleckExistingTitle = await Project.findOne({
-        title: req.body.title,
+        _id: "62c403ef44691dfaf44a254a",
+        states: []
       });
       if (cleckExistingTitle == null) {
-        const project = new Module({
-          title: req.body.title,
-          active_status: req.body.active_status,
+        const project = new Project({
+            states:[]
+       
         });
         const newProject = await project.save();
         res.status(200).json({
