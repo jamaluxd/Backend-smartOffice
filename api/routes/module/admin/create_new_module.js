@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { validate, ValidationError, Joi } = require("express-validation");
 //Validations
-const moduleValidations = require("../../../validations/module_validation");
+const moduleValidations = require("../../../validations/module_validation.js");
 // Middlewares
 const checkLogin = require("../../../middlewares/checkLogin.js");
 const checkAdmin = require("../../../middlewares/checkIsAdmin.js");
