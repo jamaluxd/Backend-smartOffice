@@ -70,4 +70,4 @@ app.use("/api/routes/role/user/showAllRolesForSelectedModule", showAllRolesForse
 
 
 
-app.listen(process.env.PORT, () => console.log("Server Started on port 3000"));
+app.listen(process.env.PORT, () => console.log(`Server Started on ${process.env.PORT}`));
