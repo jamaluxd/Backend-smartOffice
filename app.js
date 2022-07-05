@@ -31,8 +31,10 @@ const createNewDesignationRouter = require("./api/routes/designation/admin/creat
 const createNewDepartmentRouter = require("./api/routes/department/admin/create_new_department.js");
 const updateDesignationRouter = require("./api/routes/designation/admin/update_a_designation.js");
 const updateDepartmentRouter = require("./api/routes/department/admin/update_a_department.js");
+
 const createNewModuleRouter = require("./api/routes/module/admin/create_new_module.js");
 const createNewRoleRouter = require("./api/routes/role/admin/create_new_role.js");
+
 // User
 const showAllemployeesRouter = require("./api/routes/employee/user/show_all_employees.js");
 const userLoginRouter = require("./api/routes/employee/user/user_login.js");
@@ -40,8 +42,10 @@ const userLogoutRouter = require("./api/routes/employee/user/user_logout.js");
 const showAllDesignationsRouter = require("./api/routes/designation/user/show_all_designations.js");
 const showAllDepartmentsRouter = require("./api/routes/department/user/show_all_departments.js");
 const viewEmployeeProfileRouter = require("./api/routes/employee/user/view_user_profile.js");
+
 const showAllModulesRouter = require("./api/routes/module/user/show_all_modules.js");
 const showAllRolesForselectedModuleRouter = require("./api/routes/role/user/show_all_roles_for_selected_module.js");
+
 
 // API Links
 // Admin
