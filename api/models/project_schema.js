@@ -37,7 +37,7 @@ const TaskSchema = new mongoose.Schema({
     required: true,
   },
   asign_to: {
-    type: TaskAssignedSchema,
+    type: [TaskAssignedSchema],
     required: false,
   },
 });
@@ -56,7 +56,7 @@ const StateSchema = new mongoose.Schema({
     required: true,
   },
   tasks: {
-    type: TaskSchema,
+    type: [TaskSchema],
     required: false,
   },
 });
@@ -114,11 +114,11 @@ const ProjectSchema = new mongoose.Schema({
     required: true,
   },
   assign_to: {
-    type: ProjectAssignSchema,
+    type: [ProjectAssignSchema],
     required: false,
   },
   states: {
-    type: StateSchema,
+    type: [StateSchema],
     required: false,
   },
 });

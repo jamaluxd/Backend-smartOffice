@@ -17,6 +17,8 @@ router.post(
     async(req, res) => {
         try {
             const cleckExistingTitle = await Role.findOne({
+                
+            },{
                 title: req.body.title,
                 module_id: req.body.module_id,
             });
