@@ -19,7 +19,7 @@ router.post(
       const updateAssignList = await Project.findByIdAndUpdate(
         req.body.project_id,
         {
-          assign_to: [
+          $push: {assign_to: [
             {
               assign_date: new Date(),
               assigned_employee_id: req.body.assigned_employee_id,
@@ -27,9 +27,8 @@ router.post(
               active_status: true,
             },
           ],
-        }
+        }}
       );
-      console.log(updateAssignList);
       res.status(200).json({
         status: 200,
         message: "Member added successfully",

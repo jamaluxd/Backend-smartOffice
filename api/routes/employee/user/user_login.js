@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
         // set authorization cookie
         res.cookie("authorization", token, {
           httpOnly: true,
-          maxAge: 1000 * 60 * 60,
+          maxAge: 1000 * 60 * 60 * 8,
           sameSite: "strict",
           secure: process.env.NODE_ENV === "production",
           path: "/",

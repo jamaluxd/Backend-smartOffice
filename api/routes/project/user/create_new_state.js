@@ -16,26 +16,22 @@ router.post(
   checkAdmin,
   async (req, res) => {
     try {
-      const updateList = await Project.updateOne(
-        {
-          _id: req.body.project_id,
-          "states._id": req.body.state_id,
-        },
+      const updateList = await Project.findByIdAndUpdate(
+        req.body.project_id,
         {
           $push: {
-            "states.$.tasks": [
+            states: [
               {
                 title: req.body.title,
-                description: req.body.description,
                 create_date: new Date(),
                 active_status: true,
-                asign_to: [],
+                tasks: [],
               },
             ],
           },
         }
       );
-
+      
       res.status(200).json({
         status: 200,
         message: "State added successfully",
