@@ -11,7 +11,7 @@ const Role = require("../../../models/role_schema.js");
 
 router.post(
     "/",
-    validate(roleValidations.createOrUpdateRoleValidator),
+    validate(roleValidations.createRoleValidator),
     checkLogin,
     checkAdmin,
     async(req, res) => {

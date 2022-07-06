@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 const { validate, ValidationError, Joi } = require("express-validation");
 //Validations
 const moduleValidations = require("../../../validations/module_validation.js");
@@ -7,36 +8,29 @@ const moduleValidations = require("../../../validations/module_validation.js");
 const checkLogin = require("../../../middlewares/checkLogin.js");
 const checkAdmin = require("../../../middlewares/checkIsAdmin.js");
 // Models
-const Module = require("../../../models/module_schema.js");
+const Module = require("../../../models/module_schema");
+const update = {
+    active_status: false,
+}
+
 
 router.post(
     "/",
-    validate(moduleValidations.createModuleValidator),
+    validate(moduleValidations.deleteModuleValidator),
     checkLogin,
     checkAdmin,
     async(req, res) => {
         try {
-            const cleckExistingTitle = await Module.findOne({
-                title: req.body.title,
+            const newModule = await Module.findByIdAndUpdate(
+                req.body.id,
+                update,
+            );
+
+            res.status(200).json({
+                status: 200,
+                message: "Module deleted successfully",
+                body: null,
             });
-            if (cleckExistingTitle == null) {
-                const module = new Module({
-                    title: req.body.title,
-                    active_status: req.body.active_status,
-                });
-                const newModule = await module.save();
-                res.status(200).json({
-                    status: 200,
-                    message: "Module added successfully",
-                    body: newModule,
-                });
-            } else {
-                res.status(409).json({
-                    status: 409,
-                    message: "Module already exist",
-                    body: null,
-                });
-            }
         } catch (err) {
             res.status(400).json({
                 status: 400,
@@ -53,5 +47,7 @@ router.use((err, req, res, next) => {
     }
     return res.status(500).json(err);
 });
+
+
 
 module.exports = router;
