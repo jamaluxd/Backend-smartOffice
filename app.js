@@ -35,6 +35,11 @@ const updateDepartmentRouter = require("./api/routes/department/admin/update_a_d
 const createNewModuleRouter = require("./api/routes/module/admin/create_new_module.js");
 const createNewRoleRouter = require("./api/routes/role/admin/create_new_role.js");
 
+const updateModule = require("./api/routes/module/admin/update_module.js");
+const updateRole = require("./api/routes/role/admin/update_role.js");
+const deleteRole = require("./api/routes/role/admin/delete_role.js");
+const deleteModule = require("./api/routes/module/admin/delete_module.js");
+
 // User
 const showAllemployeesRouter = require("./api/routes/employee/user/show_all_employees.js");
 const userLoginRouter = require("./api/routes/employee/user/user_login.js");
@@ -57,6 +62,10 @@ app.use("/api/routes/designation/admin/updateDesignation", updateDesignationRout
 app.use("/api/routes/department/admin/updateDepartment", updateDepartmentRouter);
 app.use("/api/routes/module/admin/createNewModule", createNewModuleRouter);
 app.use("/api/routes/role/admin/createNewRole", createNewRoleRouter);
+app.use("/api/routes/module/admin/updateModule", updateModule);
+app.use("/api/routes/role/admin/updateRole", updateRole);
+app.use("/api/routes/role/admin/deleteRole", deleteRole);
+app.use("/api/routes/module/admin/deleteModule", deleteModule);
 
 // User
 app.use("/api/routes/employee/user/showAllEmployees", showAllemployeesRouter);
