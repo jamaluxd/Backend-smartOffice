@@ -47,7 +47,10 @@ const viewEmployeeProfileRouter = require("./api/routes/employee/user/view_user_
 const showAllModulesRouter = require("./api/routes/module/user/show_all_modules.js");
 const showAllRolesForselectedModuleRouter = require("./api/routes/role/user/show_all_roles_for_selected_module.js");
 const createNewProjectRouter = require("./api/routes/project/user/create_new_project.js");
-const assignNewMemberRouter = require("./api/routes/project/user/assign_new_member.js");
+const assignNewMemberRouter= require("./api/routes/project/user/assign_new_member.js");
+const createNewStateRouter = require("./api/routes/project/user/create_new_state.js");
+const createNewTaskRouter = require("./api/routes/project/user/create_new_task.js")
+const assignTaskRouter = require("./api/routes/project/user/assign_task_to_the_members.js")
 // API Links
 // Admin
 app.use(
@@ -98,6 +101,9 @@ app.use(
 );
 app.use("/api/routes/project/user/createNewProject", createNewProjectRouter);
 app.use("/api/routes/project/user/assignNewMember", assignNewMemberRouter); 
+app.use("/api/routes/project/user/createNewState", createNewStateRouter); 
+app.use("/api/routes/project/user/createNewTask", createNewTaskRouter); 
+app.use("/api/routes/project/user/assignTask", assignTaskRouter);
 
 app.listen(process.env.PORT, () =>
   console.log(`Server Started on Port:${process.env.PORT}`)

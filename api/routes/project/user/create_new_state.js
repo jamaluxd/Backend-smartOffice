@@ -15,23 +15,26 @@ router.post(
   checkLogin,
   async (req, res) => {
     try {
-      const updateAssignList = await Project.findByIdAndUpdate(
+      const updateList = await Project.findByIdAndUpdate(
         req.body.project_id,
         {
-          $push: {assign_to: [
-            {
-              assign_date: new Date(),
-              assigned_employee_id: req.body.assigned_employee_id,
-              assigned_project_role_id: req.body.assigned_project_role_id,
-              active_status: true,
-            },
-          ],
-        }}
+          $push: {
+            states: [
+              {
+                title: req.body.title,
+                create_date: new Date(),
+                active_status: true,
+                tasks: [],
+              },
+            ],
+          },
+        }
       );
+      
       res.status(200).json({
         status: 200,
-        message: "Member added successfully",
-        body: updateAssignList,
+        message: "State added successfully",
+        body: updateList,
       });
     } catch (err) {
       res.status(400).json({

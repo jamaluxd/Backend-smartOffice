@@ -13,7 +13,6 @@ router.post(
   "/",
   //   validate(departmentValidations.createOrUpdateDepartmentValidator),
   checkLogin,
-  checkAdmin,
   async (req, res) => {
     try {
       const cleckExistingTitle = await Project.findOne({
@@ -29,25 +28,32 @@ router.post(
           git_link: req.body.git_link,
           create_date: new Date(),
           active_status: true,
-          assign_to: null,
+          assign_to: [
+            {
+              assign_date: new Date(),
+              assigned_employee_id: req.id,
+              assigned_project_role_id: "62c4fb8eed37f91d9b71a2b7",
+              active_status: true,
+            },
+          ],
           states: [
             {
               title: "To Do",
               create_date: new Date(),
               active_status: true,
-              tasks: null,
+              tasks: [],
             },
             {
               title: "Test",
               create_date: new Date(),
               active_status: true,
-              tasks: null,
+              tasks: [],
             },
             {
               title: "Done",
               create_date: new Date(),
               active_status: true,
-              tasks: null,
+              tasks: [],
             }, 
           ],
         });

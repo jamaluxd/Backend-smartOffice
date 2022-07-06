@@ -5,7 +5,6 @@ const router = express.Router();
 // const departmentValidations = require("../../../validations/department_validation");
 // Middlewares
 const checkLogin = require("../../../middlewares/checkLogin.js");
-const checkAdmin = require("../../../middlewares/checkIsAdmin.js");
 // Models
 const Project = require("../../../models/project_schema.js");
 
@@ -15,23 +14,30 @@ router.post(
   checkLogin,
   async (req, res) => {
     try {
-      const updateAssignList = await Project.findByIdAndUpdate(
-        req.body.project_id,
+      const updateList = await Project.updateOne(
         {
-          $push: {assign_to: [
-            {
-              assign_date: new Date(),
-              assigned_employee_id: req.body.assigned_employee_id,
-              assigned_project_role_id: req.body.assigned_project_role_id,
-              active_status: true,
-            },
-          ],
-        }}
+          _id: req.body.project_id,
+          "states._id": req.body.state_id,
+          "states.tasks._id": req.body.task_id,
+        },
+        {
+          $push: {
+            "tasks.$.assign_to": [
+              {
+                assign_date: new Date(),
+                assigned_id: req.body.assigned_id,
+                due_date: new Date(),
+                active_status: true,
+              },
+            ],
+          },
+        }
       );
+      console.log(updateList);
       res.status(200).json({
         status: 200,
-        message: "Member added successfully",
-        body: updateAssignList,
+        message: "State added successfully",
+        body: updateList,
       });
     } catch (err) {
       res.status(400).json({

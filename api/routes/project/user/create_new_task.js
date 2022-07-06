@@ -13,31 +13,33 @@ router.post(
   "/",
   //   validate(departmentValidations.createOrUpdateDepartmentValidator),
   checkLogin,
-  checkAdmin,
   async (req, res) => {
     try {
-      const cleckExistingTitle = await Project.findOne({
-        _id: "62c403ef44691dfaf44a254a",
-        states: []
+      const updateList = await Project.updateOne(
+        {
+          _id: req.body.project_id,
+          "states._id": req.body.state_id,
+        },
+        {
+          $push: {
+            "states.$.tasks": [
+              {
+                title: req.body.title,
+                description: req.body.description,
+                create_date: new Date(),
+                active_status: true,
+                asign_to: [],
+              },
+            ],
+          },
+        }
+      );
+
+      res.status(200).json({
+        status: 200,
+        message: "State added successfully",
+        body: updateList,
       });
-      if (cleckExistingTitle == null) {
-        const project = new Project({
-            states:[]
-       
-        });
-        const newProject = await project.save();
-        res.status(200).json({
-          status: 200,
-          message: "Project added successfully",
-          body: newProject,
-        });
-      } else {
-        res.status(409).json({
-          status: 409,
-          message: "Project name already exist",
-          body: null,
-        });
-      }
     } catch (err) {
       res.status(400).json({
         status: 400,

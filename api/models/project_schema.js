@@ -36,7 +36,7 @@ const TaskSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  asign_to: {
+  assign_to: {
     type: [TaskAssignedSchema],
     required: false,
   },
@@ -69,6 +69,7 @@ const ProjectAssignSchema = new mongoose.Schema({
   assigned_employee_id: {
     type: String,
     required: true,
+    unique: true,
   },
   assigned_project_role_id: {
     type: String,
@@ -84,6 +85,7 @@ const ProjectSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+    unique: true,
   },
   description: {
     type: String,
