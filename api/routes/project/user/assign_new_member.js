@@ -13,7 +13,6 @@ router.post(
   "/",
   //   validate(departmentValidations.createOrUpdateDepartmentValidator),
   checkLogin,
-  checkAdmin,
   async (req, res) => {
     try {
       const updateAssignList = await Project.findByIdAndUpdate(

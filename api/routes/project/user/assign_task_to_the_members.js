@@ -5,7 +5,6 @@ const router = express.Router();
 // const departmentValidations = require("../../../validations/department_validation");
 // Middlewares
 const checkLogin = require("../../../middlewares/checkLogin.js");
-const checkAdmin = require("../../../middlewares/checkIsAdmin.js");
 // Models
 const Project = require("../../../models/project_schema.js");
 
@@ -15,22 +14,26 @@ router.post(
   checkLogin,
   async (req, res) => {
     try {
-      const updateList = await Project.findByIdAndUpdate(
-        req.body.project_id,
+      const updateList = await Project.updateOne(
+        {
+          _id: req.body.project_id,
+          "states._id": req.body.state_id,
+          "states.tasks._id": req.body.task_id,
+        },
         {
           $push: {
-            states: [
+            "tasks.$.assign_to": [
               {
-                title: req.body.title,
-                create_date: new Date(),
+                assign_date: new Date(),
+                assigned_id: req.body.assigned_id,
+                due_date: new Date(),
                 active_status: true,
-                tasks: [],
               },
             ],
           },
         }
       );
-      
+      console.log(updateList);
       res.status(200).json({
         status: 200,
         message: "State added successfully",

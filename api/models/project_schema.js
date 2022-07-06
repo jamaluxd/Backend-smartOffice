@@ -36,7 +36,7 @@ const TaskSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  asign_to: {
+  assign_to: {
     type: [TaskAssignedSchema],
     required: false,
   },
