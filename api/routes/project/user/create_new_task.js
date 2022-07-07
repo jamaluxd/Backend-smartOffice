@@ -22,7 +22,7 @@ router.post(
         },
         {
           $push: {
-            "states.$.tasks": [
+            "states.$[].tasks": [
               {
                 title: req.body.title,
                 description: req.body.description,

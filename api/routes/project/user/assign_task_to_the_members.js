@@ -16,17 +16,19 @@ router.post(
     try {
       const updateList = await Project.updateOne(
         {
-          _id: req.body.project_id,
-          "states._id": req.body.state_id,
-          "states.tasks._id": req.body.task_id,
+          "states.tasks": {
+            $elemMatch: {
+              _id: req.body.task_id,
+            },
+          },
         },
         {
           $push: {
-            "tasks.$.assign_to": [
+            "states.$[].tasks.$[].assign_to": [
               {
                 assign_date: new Date(),
                 assigned_id: req.body.assigned_id,
-                due_date: new Date(),
+                due_date: new Date(req.body.due_date),
                 active_status: true,
               },
             ],
