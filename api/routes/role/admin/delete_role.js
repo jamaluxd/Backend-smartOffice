@@ -13,7 +13,6 @@ const update = {
     active_status: false,
 }
 
-
 router.post(
     "/",
     validate(roleValidations.deleteRoleValidator),
