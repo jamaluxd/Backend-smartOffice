@@ -24,7 +24,7 @@ router.post(
         },
         {
           $push: {
-            "states.$[].tasks.$[].assign_to": [
+            "states.$.tasks.$[req.body.task_id,].assign_to": [
               {
                 assign_date: new Date(),
                 assigned_id: req.body.assigned_id,

@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
 const { validate, ValidationError, Joi } = require("express-validation");
 //Validations
 const roleValidations = require("../../../validations/role_validation.js");

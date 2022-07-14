@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
 const { validate, ValidationError, Joi } = require("express-validation");
+
 //Validations
 const roleValidations = require("../../../validations/role_validation.js");
 // Middlewares
@@ -41,7 +41,5 @@ router.use((err, req, res, next) => {
     }
     return res.status(500).json(err);
 });
-
-
 
 module.exports = router;

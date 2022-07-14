@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const RoleSchema = new mongoose.Schema({
+const StatusSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -14,4 +14,4 @@ const RoleSchema = new mongoose.Schema({
     required: true,
   },
 });
-module.exports = mongoose.model("role", RoleSchema);
+module.exports = mongoose.model("status", StatusSchema);
