@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors())
+
 // connect to the Database
 mongoose.connect(process.env.Mongo_URL, {
   useNewUrlParser: true,
@@ -116,5 +117,5 @@ app.use(
   showAllStatusesForSelectedModuleRouter
 );
 app.listen(process.env.PORT, () =>
-  console.log(`Server Started on Port:${process.env.PORT}`)
+  console.log(`Server Started on http://localhost:${process.env.PORT}`)
 );
