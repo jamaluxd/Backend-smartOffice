@@ -24,7 +24,7 @@ router.post(
         },
         {
           $push: {
-            "states.$.tasks.$[req.body.task_id,].assign_to": [
+            "states.$.tasks.$[task].assign_to": [
               {
                 assign_date: new Date(),
                 assigned_id: req.body.assigned_id,
@@ -33,6 +33,9 @@ router.post(
               },
             ],
           },
+        },
+        {
+          arrayFilters: [{ "task._id": req.body.task_id }],
         }
       );
       console.log(updateList);
