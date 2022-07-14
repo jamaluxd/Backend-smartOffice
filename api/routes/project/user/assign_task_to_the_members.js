@@ -14,36 +14,49 @@ router.post(
   checkLogin,
   async (req, res) => {
     try {
-      const updateList = await Project.updateOne(
-        {
-          "states.tasks": {
-            $elemMatch: {
-              _id: req.body.task_id,
-            },
+      const findOnMemberList = await Project.findOne({
+        assign_to: {
+          $elemMatch: {
+            assigned_employee_id: req.body.assigned_id,
           },
         },
-        {
-          $push: {
-            "states.$.tasks.$[task].assign_to": [
-              {
+      });
+
+      if (findOnMemberList) {
+        const updateList = await Project.updateOne(
+          {
+            "states.tasks": {
+              $elemMatch: {
+                _id: req.body.task_id,
+              },
+            },
+          },
+          {
+            $set: {
+              "states.$.tasks.$[task].assign_to": {
                 assign_date: new Date(),
                 assigned_id: req.body.assigned_id,
                 due_date: new Date(req.body.due_date),
                 active_status: true,
               },
-            ],
+            },
           },
-        },
-        {
-          arrayFilters: [{ "task._id": req.body.task_id }],
-        }
-      );
-      console.log(updateList);
-      res.status(200).json({
-        status: 200,
-        message: "State added successfully",
-        body: updateList,
-      });
+          {
+            arrayFilters: [{ "task._id": req.body.task_id }],
+          }
+        );
+        res.status(200).json({
+          status: 200,
+          message: "Task assigned successfully",
+          body: updateList,
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          message: "Employee doesn't added as Project Member",
+          body: null,
+        });
+      }
     } catch (err) {
       res.status(400).json({
         status: 400,

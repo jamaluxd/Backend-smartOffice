@@ -4,13 +4,14 @@ const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const cors = require('cors')
 const app = express();
 
 dotenv.config();
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
-
+app.use(cors())
 // connect to the Database
 mongoose.connect(process.env.Mongo_URL, {
   useNewUrlParser: true,
