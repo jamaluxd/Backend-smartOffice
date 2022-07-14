@@ -23,7 +23,7 @@ router.post(
           title: req.body.title,
           description: req.body.description,
           current_version: req.body.current_version,
-          current_status: req.body.current_status,
+          current_status_id: req.body.current_status_id,
           schedule_link: req.body.schedule_link,
           git_link: req.body.git_link,
           create_date: new Date(),

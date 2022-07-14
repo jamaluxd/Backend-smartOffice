@@ -37,7 +37,7 @@ const TaskSchema = new mongoose.Schema({
     required: true,
   },
   assign_to: {
-    type: [TaskAssignedSchema],
+    type: TaskAssignedSchema,
     required: false,
   },
 });
@@ -95,7 +95,7 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  current_status: {
+  current_status_id: {
     type: String,
     required: true,
   },

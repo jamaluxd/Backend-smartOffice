@@ -17,12 +17,11 @@ router.post(
     try {
       const updateList = await Project.updateOne(
         {
-          _id: req.body.project_id,
           "states._id": req.body.state_id,
         },
         {
           $push: {
-            "states.$[].tasks": [
+            "states.$.tasks": [
               {
                 title: req.body.title,
                 description: req.body.description,
