@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const checkLoginNew = async (req, res, next) => {
   try {
     // const token = req.cookies.authorization;
-    const token = req.body.authorization;
+    const token = req.body.access_token;
     if (token === null || token === undefined) {
       res.status(402).json({
         status: 402,
