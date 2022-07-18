@@ -12,6 +12,9 @@ const employeeValidations = {
           tlds: { allow: ["com", "net", "jp"] },
         })
         .required(),
+      contect_number: Joi.string().required(),
+      address: Joi.string().required(),
+      description: Joi.string().max(150).required(),
       password: Joi.string()
         .min(8)
         .pattern(
@@ -21,7 +24,8 @@ const employeeValidations = {
         )
         .required(),
       admin: Joi.boolean().required(),
-      active_status :Joi.boolean().required(),
+      active_status: Joi.boolean().required(),
+      access_token: Joi.string().required(),
     }),
   },
 };

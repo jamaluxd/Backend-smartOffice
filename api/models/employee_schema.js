@@ -5,7 +5,7 @@ const EmployeeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  
+
   department_id: {
     type: String,
     required: true,
@@ -32,11 +32,26 @@ const EmployeeSchema = new mongoose.Schema({
     unique: true,
   },
 
-  password: {
+  contect_number: {
     type: String,
     required: true,
   },
 
+  address: {
+    type: String,
+    required: true,
+  },
+
+  description: {
+    type: String,
+    required: true,
+  },
+
+  password: {
+    type: String,
+    required: true,
+  },
+  
   admin: {
     type: Boolean,
     required: true,
