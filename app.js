@@ -4,14 +4,14 @@ const mongoose = require("mongoose");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const cors = require('cors')
+const cors = require("cors");
 const app = express();
 
 dotenv.config();
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors())
+app.use(cors());
 
 // connect to the Database
 mongoose.connect(process.env.Mongo_URL, {
@@ -55,6 +55,8 @@ const createNewStateRouter = require("./api/routes/project/user/create_new_state
 const createNewTaskRouter = require("./api/routes/project/user/create_new_task.js");
 const assignTaskRouter = require("./api/routes/project/user/assign_task_to_the_members.js");
 const showAllStatusesForSelectedModuleRouter = require("./api/routes/settings/status/user/show_all_statuses_for_selected_module.js");
+const showAllProjectsRouter = require("./api/routes/project/user/show_all_projects.js");
+
 // API Links
 // Admin
 app.use(
@@ -116,6 +118,8 @@ app.use(
   "/api/routes/settings/status/user/showAllStatusesForSelectedModule",
   showAllStatusesForSelectedModuleRouter
 );
+app.use("/api/routes/project/user/showAllProjects", showAllProjectsRouter);
+
 app.listen(process.env.PORT, () =>
   console.log(`Server Started on http://localhost:${process.env.PORT}`)
 );
