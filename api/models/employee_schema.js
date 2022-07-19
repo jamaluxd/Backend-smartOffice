@@ -34,17 +34,17 @@ const EmployeeSchema = new mongoose.Schema({
 
   contect_number: {
     type: String,
-    required: true,
+    required: false,
   },
 
   address: {
     type: String,
-    required: true,
+    required: false,
   },
 
   description: {
     type: String,
-    required: true,
+    required: false,
   },
 
   password: {
