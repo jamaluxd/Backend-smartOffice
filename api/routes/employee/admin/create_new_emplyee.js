@@ -10,7 +10,9 @@ const checkAdmin = require("../../../middlewares/checkIsAdmin.js");
 // Models
 const Employee = require("../../../models/employee_schema");
 
-router.post("/", validate(employeeValidations.createOrUpdateEmployeeValidator), checkLogin, checkAdmin,
+router.post("/", validate(employeeValidations.createOrUpdateEmployeeValidator),
+    //  checkLogin, 
+    //  checkAdmin,
     async(req, res) => {
         console.log(req.body);
         try {
@@ -24,6 +26,9 @@ router.post("/", validate(employeeValidations.createOrUpdateEmployeeValidator), 
                     department_id: req.body.department_id,
                     designation_id: req.body.designation_id,
                     email: req.body.email,
+                    contect_number: req.body.contect_number,
+                    address: req.body.address,
+                    description: req.body.description,
                     password: hashedPassword,
                     admin: req.body.admin,
                     active_status: true,

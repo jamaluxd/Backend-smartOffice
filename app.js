@@ -15,7 +15,7 @@ app.use(cors());
 
 // connect to the Database
 mongoose.connect(process.env.Mongo_URL, {
-  useNewUrlParser: true,
+    useNewUrlParser: true,
 });
 
 const db = mongoose.connection;
@@ -60,25 +60,25 @@ const showAllProjectsRouter = require("./api/routes/project/user/show_all_projec
 // API Links
 // Admin
 app.use(
-  "/api/routes/employee/admin/createNewEmployee",
-  createNewEmployeeRouter
+    "/api/routes/employee/admin/createNewEmployee",
+    createNewEmployeeRouter
 );
 app.use("/api/routes/employee/admin/updateEmployee", updateEmployeeRouter);
 app.use(
-  "/api/routes/designation/admin/createNewDesignation",
-  createNewDesignationRouter
+    "/api/routes/designation/admin/createNewDesignation",
+    createNewDesignationRouter
 );
 app.use(
-  "/api/routes/department/admin/createNewDepartment",
-  createNewDepartmentRouter
+    "/api/routes/department/admin/createNewDepartment",
+    createNewDepartmentRouter
 );
 app.use(
-  "/api/routes/designation/admin/updateDesignation",
-  updateDesignationRouter
+    "/api/routes/designation/admin/updateDesignation",
+    updateDesignationRouter
 );
 app.use(
-  "/api/routes/department/admin/updateDepartment",
-  updateDepartmentRouter
+    "/api/routes/department/admin/updateDepartment",
+    updateDepartmentRouter
 );
 app.use("/api/routes/module/admin/createNewModule", createNewModuleRouter);
 app.use("/api/routes/role/admin/createNewRole", createNewRoleRouter);
@@ -95,18 +95,18 @@ app.use("/api/routes/employee/user/showAllEmployees", showAllemployeesRouter);
 app.use("/api/routes/employee/user/userLogin", userLoginRouter);
 app.use("/api/routes/employee/user/userLogout", userLogoutRouter);
 app.use(
-  "/api/routes/designation/user/showAllDesignations",
-  showAllDesignationsRouter
+    "/api/routes/designation/user/showAllDesignations",
+    showAllDesignationsRouter
 );
 app.use(
-  "/api/routes/department/user/showAllDepartments",
-  showAllDepartmentsRouter
+    "/api/routes/department/user/showAllDepartments",
+    showAllDepartmentsRouter
 );
 app.use("/api/routes/employee/user/viewUserProfile", viewEmployeeProfileRouter);
 app.use("/api/routes/module/user/showAllModules", showAllModulesRouter);
 app.use(
-  "/api/routes/role/user/showAllRolesForSelectedModule",
-  showAllRolesForSelectedModuleRouter
+    "/api/routes/role/user/showAllRolesForSelectedModule",
+    showAllRolesForSelectedModuleRouter
 );
 app.use("/api/routes/project/user/createNewProject", createNewProjectRouter);
 app.use("/api/routes/project/user/assignNewMember", assignNewMemberRouter);
@@ -115,11 +115,11 @@ app.use("/api/routes/project/user/createNewTask", createNewTaskRouter);
 app.use("/api/routes/project/user/assignTask", assignTaskRouter);
 
 app.use(
-  "/api/routes/settings/status/user/showAllStatusesForSelectedModule",
-  showAllStatusesForSelectedModuleRouter
+    "/api/routes/settings/status/user/showAllStatusesForSelectedModule",
+    showAllStatusesForSelectedModuleRouter
 );
 app.use("/api/routes/project/user/showAllProjects", showAllProjectsRouter);
 
 app.listen(process.env.PORT, () =>
-  console.log(`Server Started on http://localhost:${process.env.PORT}`)
+    console.log(`Server Started on http://localhost:${process.env.PORT}`)
 );
