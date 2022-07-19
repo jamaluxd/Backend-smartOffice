@@ -11,10 +11,8 @@ const checkAdmin = require("../../../middlewares/checkIsAdmin.js");
 const Employee = require("../../../models/employee_schema");
 
 router.post("/", validate(employeeValidations.createOrUpdateEmployeeValidator),
-
-    //  checkLogin, 
-    //  checkAdmin,
-
+     checkLogin, 
+     checkAdmin,
     async(req, res) => {
         console.log(req.body);
         try {
