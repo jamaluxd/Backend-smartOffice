@@ -115,7 +115,7 @@ const ProjectSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  assign_to: {
+  assign_members: {
     type: [ProjectAssignSchema],
     required: false,
   },
