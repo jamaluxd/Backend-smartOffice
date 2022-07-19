@@ -28,7 +28,7 @@ router.post(
           git_link: req.body.git_link,
           create_date: new Date(),
           active_status: true,
-          assign_to: [
+          assign_members: [
             {
               assign_date: new Date(),
               assigned_employee_id: req.id,
