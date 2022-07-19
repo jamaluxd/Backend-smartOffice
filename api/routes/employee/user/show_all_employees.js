@@ -10,7 +10,9 @@ const Designation = require("../../../models/designation_schema.js");
 
 router.post("/", checkLogin, async (req, res) => {
   try {
-    const ShowEmployeeList = await Employee.find({},{
+    const ShowEmployeeList = await Employee.find({
+      active_status: true
+    },{
       
     });
 

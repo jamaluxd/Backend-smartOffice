@@ -40,6 +40,7 @@ const deleteModuleRouter = require("./api/routes/module/admin/delete_module.js")
 const createStatusRouter = require("./api/routes/settings/status/admin/create_new_status.js");
 const updateStatusRouter = require("./api/routes/settings/status/admin/update_status.js");
 const deleteStatusRouter = require("./api/routes/settings/status/admin/detete_status.js");
+const deleteAnEmployeeRouter= require("./api/routes/employee/admin/delete_an_employee.js");
 // User
 const showAllemployeesRouter = require("./api/routes/employee/user/show_all_employees.js");
 const userLoginRouter = require("./api/routes/employee/user/user_login.js");
@@ -56,7 +57,7 @@ const createNewTaskRouter = require("./api/routes/project/user/create_new_task.j
 const assignTaskRouter = require("./api/routes/project/user/assign_task_to_the_members.js");
 const showAllStatusesForSelectedModuleRouter = require("./api/routes/settings/status/user/show_all_statuses_for_selected_module.js");
 const showAllProjectsRouter = require("./api/routes/project/user/show_all_projects.js");
-
+const moveTaskFromStateToStateRouter = require("./api/routes/project/user/move_tast_from_state_to_state.js");
 // API Links
 // Admin
 app.use(
@@ -89,6 +90,7 @@ app.use("/api/routes/module/admin/deleteModule", deleteModuleRouter);
 app.use("/api/routes/settings/status/admin/createStatus", createStatusRouter);
 app.use("/api/routes/settings/status/admin/updateStatus", updateStatusRouter);
 app.use("/api/routes/settings/status/admin/deleteStatus", deleteStatusRouter);
+app.use("/api/routes/employee/admin/deleteAnEmployee", deleteAnEmployeeRouter);
 
 // User
 app.use("/api/routes/employee/user/showAllEmployees", showAllemployeesRouter);
@@ -119,6 +121,7 @@ app.use(
     showAllStatusesForSelectedModuleRouter
 );
 app.use("/api/routes/project/user/showAllProjects", showAllProjectsRouter);
+app.use("/api/routes/project/user/moveTaskFromStateToState", moveTaskFromStateToStateRouter);
 
 app.listen(process.env.PORT, () =>
     console.log(`Server Started on http://localhost:${process.env.PORT}`)
