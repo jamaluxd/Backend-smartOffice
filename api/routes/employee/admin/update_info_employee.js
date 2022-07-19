@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
 const { validate, ValidationError, Joi } = require("express-validation");
 //Validations
 const employeeValidations = require("../../../validations/employee_validations.js");
@@ -12,7 +11,7 @@ const Employee = require("../../../models/employee_schema");
 
 router.post(
   "/",
-  validate(employeeValidations.createOrUpdateEmployeeValidator),
+  validate(employeeValidations.updateEmployeeValidator),
   checkLogin,
   checkAdmin,
   async (req, res) => {
@@ -41,4 +40,5 @@ router.use((err, req, res, next) => {
   }
   return res.status(500).json(err);
 });
+
 module.exports = router;
