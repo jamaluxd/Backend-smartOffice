@@ -9,5 +9,6 @@ const designationValidations = {
             access_token: Joi.string().required(),
         }),
     },
+
 };
 module.exports = designationValidations;
