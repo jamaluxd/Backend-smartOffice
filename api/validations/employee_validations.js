@@ -31,6 +31,7 @@ const employeeValidations = {
 
   updateEmployeeValidator: {
     body: Joi.object({
+      id: Joi.string().required(),
       name: Joi.string().min(2).max(30),
       department_id: Joi.string(),
       designation_id: Joi.string(),
@@ -51,7 +52,7 @@ const employeeValidations = {
         ),
       admin: Joi.boolean(),
       active_status: Joi.boolean(),
-      access_token: Joi.string(),
+      access_token: Joi.string().required(),
     }),
   },
 
