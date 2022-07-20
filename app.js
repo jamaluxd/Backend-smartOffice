@@ -57,7 +57,7 @@ const createNewTaskRouter = require("./api/routes/project/user/create_new_task.j
 const assignTaskRouter = require("./api/routes/project/user/assign_task_to_the_members.js");
 const showAllStatusesForSelectedModuleRouter = require("./api/routes/settings/status/user/show_all_statuses_for_selected_module.js");
 const showAllProjectsRouter = require("./api/routes/project/user/show_all_projects.js");
-const moveTaskFromStateToStateRouter = require("./api/routes/project/user/move_tast_from_state_to_state.js");
+const moveTaskFromStateToStateRouter = require("./api/routes/project/user/move_task_from_state_to_state");
 // API Links
 // Admin
 app.use(
