@@ -4,12 +4,32 @@ const router = express.Router();
 const checkLogin = require("../../../middlewares/checkLogin.js");
 // Models
 const Project = require("../../../models/project_schema.js");
+const Employee = require("../../../models/employee_schema");
+const Status = require("../../../models/status_schema");
 
 router.post("/", checkLogin, async (req, res) => {
   try {
     const cleckExistingProjects = await Project.find({
       active_status: true,
     });
+
+    for (let i = 0; i < cleckExistingProjects.length; i++) {
+      // const findEmployeeNameById = await Employee.findById(
+      //   cleckExistingProjects[i].department_id,
+      //   "title"
+      // );
+      // cleckExistingProjects[i].department = findDepartmentNameById.title;
+
+      const findStatusTitleById = await Status.findById(
+        cleckExistingProjects[i].current_status_id,
+        "title"
+      );
+      cleckExistingProjects[i].status = findStatusTitleById.title;
+    }
+
+
+
+
     res.status(200).json({
       status: 200,
       message: "Found",

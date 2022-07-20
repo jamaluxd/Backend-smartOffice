@@ -1,34 +1,30 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 // const { validate, ValidationError, Joi } = require("express-validation");
 //Validations
 // const departmentValidations = require("../../../validations/department_validation");
 // Middlewares
-const checkLogin = require("../../../middlewares/checkLogin.js");
+const checkLogin = require('../../../middlewares/checkLogin.js');
 // Models
-const Project = require("../../../models/project_schema.js");
+const Project = require('../../../models/project_schema.js');
 
 router.post(
-  "/",
+  '/',
   //   validate(departmentValidations.createOrUpdateDepartmentValidator),
   checkLogin,
   async (req, res) => {
     try {
       const updateList = await Project.updateOne({
-        $pull: {
-          "states.tasks": {
-            $elemMatch: {
-              _id: req.body.task_id,
-            },
+        'states.tasks': {
+          $elemMatch: {
+            _id: req.body.task_id,
           },
         },
-        $push: {
-            
-        },
       });
+
       res.status(200).json({
         status: 200,
-        message: "Task assigned successfully",
+        message: 'Task assigned successfully',
         body: updateList,
       });
     } catch (err) {
