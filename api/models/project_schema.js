@@ -79,6 +79,10 @@ const ProjectAssignSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  assigned_project_role_title: {
+    type: String,
+    required: false,
+  },
   active_status: {
     type: Boolean,
     required: true,
