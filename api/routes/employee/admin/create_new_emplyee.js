@@ -24,9 +24,9 @@ router.post(
   validate(employeeValidations.createOrUpdateEmployeeValidator),
   checkLogin,
   checkAdmin,
-  upload.single(),
+  upload.single('employeeImage'),
   async (req, res) => {
-    console.log(req.body);
+    console.log(req.file);
     try {
       const cleckExistingEmployee = await Employee.findOne({
         email: req.body.email,
