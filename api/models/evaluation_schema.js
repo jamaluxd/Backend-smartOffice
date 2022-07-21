@@ -9,14 +9,14 @@ const EvaluationSchema = new mongoose.Schema({
     results: [{
         question: {
             type: Number,
-            required: true
+            required: true,
         },
 
         answer: {
             type: Number,
             required: true,
-        }
-    }]
+        },
+    }],
 });
 
 module.exports.Evaluation = mongoose.model("Evaluation", EvaluationSchema);
