@@ -57,7 +57,8 @@ const createNewTaskRouter = require("./api/routes/project/user/create_new_task.j
 const assignTaskRouter = require("./api/routes/project/user/assign_task_to_the_members.js");
 const showAllStatusesForSelectedModuleRouter = require("./api/routes/settings/status/user/show_all_statuses_for_selected_module.js");
 const showAllProjectsRouter = require("./api/routes/project/user/show_all_projects.js");
-const moveTaskFromStateToStateRouter = require("./api/routes/project/user/move_task_from_state_to_state");
+const moveTaskFromStateToStateRouter = require("./api/routes/project/user/move_task_from_state_to_state.js");
+const showSingleProjectDetailsRouter = require("./api/routes/project/user/show_single_project_deatils.js");
 // API Links
 // Admin
 app.use(
@@ -122,6 +123,8 @@ app.use(
 );
 app.use("/api/routes/project/user/showAllProjects", showAllProjectsRouter);
 app.use("/api/routes/project/user/moveTaskFromStateToState", moveTaskFromStateToStateRouter);
+app.use("/api/routes/project/user/showSingleProjectDetails", showSingleProjectDetailsRouter);
+
 
 app.listen(process.env.PORT, () =>
     console.log(`Server Started on http://localhost:${process.env.PORT}`)
