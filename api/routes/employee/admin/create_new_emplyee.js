@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const multer = require('multer');
-const upload = multer({
-  dest: './api/assets/employee_profile_images/',
-});
+// const multer = require('multer');
+// const upload = multer({
+//   dest: './api/assets/employee_profile_images/',
+// });
 
 const {
   validate,
@@ -24,9 +24,8 @@ router.post(
   validate(employeeValidations.createOrUpdateEmployeeValidator),
   checkLogin,
   checkAdmin,
-  upload.single('employeeImage'),
+  // upload.single('employeeImage'),
   async (req, res) => {
-    console.log(req.file);
     try {
       const cleckExistingEmployee = await Employee.findOne({
         email: req.body.email,
