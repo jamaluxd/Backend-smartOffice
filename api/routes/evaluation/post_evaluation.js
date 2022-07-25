@@ -21,9 +21,8 @@ const showAllEvaluation = async (req, res) => {
 };
 
 const showEvaluationByEmployeeId = async (req, res) => {
-    console.log("Request from body", req.params);
     const employee_id = req.params.id;
-    console.log("Employees Id are",employee_id);
+    console.log(`Employee id are: ${employee_id}`);
 
     try{
         const employee = await Evaluation.findById(employee_id);
@@ -35,11 +34,41 @@ const showEvaluationByEmployeeId = async (req, res) => {
     }
 };
 
+const updateEvaluationByEmployeeId = async (req, res) => {
+    const id = req.params.id;
+    const updateData = req.body;
+
+    try {
+        const employee = await Evaluation.findByIdAndUpdate(id, updateData, { new: true, useFindAndModify: false });
+        if(!employee) return res.status(404).send("Id not found for update!");
+        res.send(employee);
+
+    } catch(err) {
+        return res.status(404).send("Id not found!", err);
+    }
+}
+
+const deleteEvaluationByEmployeeId = async (req, res) => {
+    const id = req.params.id;
+    
+    try {
+        employee = await Evaluation.findByIdAndDelete(id);
+        if(!employee) return res.status(404).send('Id not found for delete!');
+        res.send(employee);
+
+    } catch (err) {
+        return res.status(404).send('Id not found!');
+    }
+};
+
 router.route('/')
     .post(createEvaluation)
     .get(showAllEvaluation)
 
-router.route('/employeeId')
+router.route('/:id')
     .get(showEvaluationByEmployeeId)
+    .put(updateEvaluationByEmployeeId)
+    .delete(deleteEvaluationByEmployeeId)
+        
 
 module.exports = router;
