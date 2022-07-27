@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const app = express();
-
 dotenv.config();
 app.use(bodyParser.json());
 app.use(express.json());
@@ -16,15 +15,7 @@ app.use(
   '/api/assets/employee_profile_images',
   express.static('./api/assets/employee_profile_images/')
 );
-// connect to the Database
-mongoose.connect(process.env.Mongo_URL, {
-  useNewUrlParser: true,
-});
 
-const db = mongoose.connection;
-
-db.on('error', (error) => console.log(error));
-db.once('open', () => console.log('Conntected to Database'));
 
 // Requires
 // Admin
@@ -181,8 +172,4 @@ app.use(
   showSingleProjectDetailsRouter
 );
 
-app.listen(process.env.PORT, () =>
-  console.log(
-    `Server Started on http://localhost:${process.env.PORT}`
-  )
-);
+module.exports = app;
