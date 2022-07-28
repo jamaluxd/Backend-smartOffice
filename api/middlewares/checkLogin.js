@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 const checkLoginNew = async (req, res, next) => {
   try {
@@ -7,7 +7,7 @@ const checkLoginNew = async (req, res, next) => {
     if (token === null || token === undefined) {
       res.status(402).json({
         status: 402,
-        message: "Token unavailable",
+        message: 'Token unavailable',
       });
     } else {
       const decode = await jwt.verify(token, process.env.JWT_SECRET);
@@ -19,7 +19,7 @@ const checkLoginNew = async (req, res, next) => {
   } catch {
     res.status(401).json({
       status: 401,
-      message: "Token unavailable",
+      message: 'Token unavailable',
     });
   }
 };

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const TaskAssignedSchema = new mongoose.Schema({
   assign_date: {
@@ -71,9 +71,17 @@ const ProjectAssignSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  assigned_employee_name: {
+    type: String,
+    required: false,
+  },
   assigned_project_role_id: {
     type: String,
     required: true,
+  },
+  assigned_project_role_title: {
+    type: String,
+    required: false,
   },
   active_status: {
     type: Boolean,
@@ -99,6 +107,12 @@ const ProjectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  project_status: {
+    type: String,
+    required: false,
+  },
+
   schedule_link: {
     type: String,
     required: true,
@@ -115,7 +129,7 @@ const ProjectSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  assign_to: {
+  assign_members: {
     type: [ProjectAssignSchema],
     required: false,
   },
@@ -125,4 +139,4 @@ const ProjectSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("project", ProjectSchema);
+module.exports = mongoose.model('project', ProjectSchema);
