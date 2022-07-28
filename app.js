@@ -37,23 +37,27 @@ const deleteStatusRouter = require('./api/routes/settings/status/admin/detete_st
 const deleteAnEmployeeRouter = require('./api/routes/employee/admin/delete_an_employee.js');
 const uploadEmployeeImageRouter = require('./api/routes/employee/admin/upload_employee_image.js');
 // User
-const showAllemployeesRouter = require('./api/routes/employee/user/show_all_employees.js');
-const userLoginRouter = require('./api/routes/employee/user/user_login.js');
-const userLogoutRouter = require('./api/routes/employee/user/user_logout.js');
-const showAllDesignationsRouter = require('./api/routes/designation/user/show_all_designations.js');
-const showAllDepartmentsRouter = require('./api/routes/department/user/show_all_departments.js');
-const viewEmployeeProfileRouter = require('./api/routes/employee/user/view_user_profile.js');
-const showAllModulesRouter = require('./api/routes/module/user/show_all_modules.js');
-const showAllRolesForSelectedModuleRouter = require('./api/routes/role/user/show_all_roles_for_selected_module.js');
-const createNewProjectRouter = require('./api/routes/project/user/create_new_project.js');
-const assignNewMemberRouter = require('./api/routes/project/user/assign_new_member.js');
-const createNewStateRouter = require('./api/routes/project/user/create_new_state.js');
-const createNewTaskRouter = require('./api/routes/project/user/create_new_task.js');
-const assignTaskRouter = require('./api/routes/project/user/assign_task_to_the_members.js');
-const showAllStatusesForSelectedModuleRouter = require('./api/routes/settings/status/user/show_all_statuses_for_selected_module.js');
-const showAllProjectsRouter = require('./api/routes/project/user/show_all_projects.js');
-const moveTaskFromStateToStateRouter = require('./api/routes/project/user/move_task_from_state_to_state.js');
-const showSingleProjectDetailsRouter = require('./api/routes/project/user/show_single_project_deatils.js');
+
+const showAllemployeesRouter = require("./api/routes/employee/user/show_all_employees.js");
+const userLoginRouter = require("./api/routes/employee/user/user_login.js");
+const userLogoutRouter = require("./api/routes/employee/user/user_logout.js");
+const showAllDesignationsRouter = require("./api/routes/designation/user/show_all_designations.js");
+const showAllDepartmentsRouter = require("./api/routes/department/user/show_all_departments.js");
+const viewEmployeeProfileRouter = require("./api/routes/employee/user/view_user_profile.js");
+const showAllModulesRouter = require("./api/routes/module/user/show_all_modules.js");
+const showAllRolesForSelectedModuleRouter = require("./api/routes/role/user/show_all_roles_for_selected_module.js");
+const createNewProjectRouter = require("./api/routes/project/user/create_new_project.js");
+const assignNewMemberRouter = require("./api/routes/project/user/assign_new_member.js");
+const createNewStateRouter = require("./api/routes/project/user/create_new_state.js");
+const createNewTaskRouter = require("./api/routes/project/user/create_new_task.js");
+const assignTaskRouter = require("./api/routes/project/user/assign_task_to_the_members.js");
+const showAllStatusesForSelectedModuleRouter = require("./api/routes/settings/status/user/show_all_statuses_for_selected_module.js");
+const showAllProjectsRouter = require("./api/routes/project/user/show_all_projects.js");
+
+// Evaluation
+const postEvaluation = require("./api/routes/evaluation/post_evaluation");
+//
+
 // API Links
 // Admin
 app.use(
@@ -159,9 +163,17 @@ app.use(
   '/api/routes/settings/status/user/showAllStatusesForSelectedModule',
   showAllStatusesForSelectedModuleRouter
 );
-app.use(
-  '/api/routes/project/user/showAllProjects',
-  showAllProjectsRouter
+
+app.use("/api/routes/project/user/showAllProjects", showAllProjectsRouter);
+
+// Evaluation
+app.use("/api/routes/evaluation/createEvaluation", postEvaluation);
+
+//
+
+app.listen(process.env.PORT, () =>
+  console.log(`Server Started on http://localhost:${process.env.PORT}`)
+
 );
 app.use(
   '/api/routes/project/user/moveTaskFromStateToState',
