@@ -16,7 +16,6 @@ app.use(
   express.static('./api/assets/employee_profile_images/')
 );
 
-
 // Requires
 // Admin
 const createNewEmployeeRouter = require('./api/routes/employee/admin/create_new_emplyee.js');
@@ -54,6 +53,7 @@ const showAllStatusesForSelectedModuleRouter = require('./api/routes/settings/st
 const showAllProjectsRouter = require('./api/routes/project/user/show_all_projects.js');
 const moveTaskFromStateToStateRouter = require('./api/routes/project/user/move_task_from_state_to_state.js');
 const showSingleProjectDetailsRouter = require('./api/routes/project/user/show_single_project_deatils.js');
+const deleteProjectRouter = require('./api/routes/project/user/delete_project.js');
 // API Links
 // Admin
 app.use(
@@ -170,6 +170,11 @@ app.use(
 app.use(
   '/api/routes/project/user/showSingleProjectDetails',
   showSingleProjectDetailsRouter
+);
+
+app.use(
+  '/api/routes/project/user/deleteProject',
+  deleteProjectRouter
 );
 
 module.exports = app;
