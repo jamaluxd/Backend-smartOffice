@@ -128,19 +128,6 @@ const EvaluationSchema = new mongoose.Schema({
         required: true,
     },
 
-
-
-    // results: [{
-    //     question: {
-    //         type: Number,
-    //         required: true,
-    //     },
-
-    //     answer: {
-    //         type: Number,
-    //         required: true,
-    //     },
-    // }],
 });
 
 module.exports.Evaluation = mongoose.model("Evaluation", EvaluationSchema);
