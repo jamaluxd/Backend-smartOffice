@@ -53,7 +53,7 @@ const Employee = require('../../../models/employee_schema');
 
 router.post(
   '/',
-  validate(employeeValidations.createOrUpdateEmployeeValidator),
+  // validate(employeeValidations.createOrUpdateEmployeeValidator),
   checkLogin,
   checkAdmin,
   upload.single('employeeImage'),
