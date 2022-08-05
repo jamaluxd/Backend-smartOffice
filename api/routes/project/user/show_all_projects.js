@@ -26,15 +26,17 @@ router.post('/', checkLogin, async (req, res) => {
           'name'
         );
 
+        if (findEmployeeNameById !== null) {
+          cleckExistingProjects[i].assign_members[
+            j
+          ].assigned_employee_name = findEmployeeNameById.name;
+        }
+
         const findRoleTitleById = await Role.findById(
           cleckExistingProjects[i].assign_members[j]
             .assigned_project_role_id,
           'title'
         );
-
-        cleckExistingProjects[i].assign_members[
-          j
-        ].assigned_employee_name = findEmployeeNameById.name;
 
         cleckExistingProjects[i].assign_members[
           j
