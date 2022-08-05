@@ -126,7 +126,7 @@ const EvaluationSchema = new mongoose.Schema({
     keep_equipment_good: {
         type: Number,
         required: true,
-    },
+    }
 
 });
 
