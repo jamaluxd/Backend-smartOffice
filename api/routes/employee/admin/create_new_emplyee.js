@@ -79,6 +79,7 @@ router.post(
           admin: req.body.admin,
           image: req.file.path,
           active_status: true,
+          access_token: req.body.access_token,
         });
         const newEmployee = await employee.save();
         res.status(200).json({
