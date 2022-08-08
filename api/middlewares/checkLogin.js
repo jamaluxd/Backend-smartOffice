@@ -8,7 +8,9 @@ const checkLoginNew = async (req, res, next) => {
       res.status(402).json({
         status: 402,
         message: 'Token unavailable',
+        token: token,
       });
+      console.log('token:', token);
     } else {
       const decode = await jwt.verify(token, process.env.JWT_SECRET);
       const { id, admin } = decode;
@@ -20,6 +22,7 @@ const checkLoginNew = async (req, res, next) => {
     res.status(401).json({
       status: 401,
       message: 'Token unavailable',
+      token: token,
     });
   }
 };
