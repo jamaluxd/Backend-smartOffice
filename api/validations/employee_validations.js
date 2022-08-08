@@ -15,7 +15,7 @@ const employeeValidations = {
       contect_number: Joi.string().required(),
       address: Joi.string().required(),
       description: Joi.string().max(150).required(),
-      image: Joi.any().required(),
+      // image: Joi.any().required(),
       password: Joi.string()
         .min(8)
         .pattern(
@@ -43,7 +43,7 @@ const employeeValidations = {
       contect_number: Joi.string(),
       address: Joi.string(),
       description: Joi.string().max(150),
-      image: Joi.any(),
+      // image: Joi.any(),
       password: Joi.string()
         .min(8)
         .pattern(

@@ -61,15 +61,15 @@ router.post('/', async (req, res) => {
           body: loginEmployee,
         });
       } else {
-        res.status(401).json({
-          status: 401,
+        res.status(402).json({
+          status: 402,
           message: 'Authentication Failed!!!',
           body: [],
         });
       }
     } else {
-      res.status(401).json({
-        status: 401,
+      res.status(400).json({
+        status: 400,
         message: 'Authentication Failed!!!',
         body: [],
       });
