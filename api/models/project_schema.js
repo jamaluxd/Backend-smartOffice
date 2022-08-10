@@ -67,22 +67,17 @@ const ProjectAssignSchema = new mongoose.Schema({
     required: true,
   },
   assigned_employee_id: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'employee',
     required: true,
-    unique: true,
   },
-  assigned_employee_name: {
-    type: String,
-    required: false,
-  },
+
   assigned_project_role_id: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'role',
     required: true,
   },
-  assigned_project_role_title: {
-    type: String,
-    required: false,
-  },
+ 
   active_status: {
     type: Boolean,
     required: true,
@@ -104,15 +99,11 @@ const ProjectSchema = new mongoose.Schema({
     required: true,
   },
   current_status_id: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'status',
     required: true,
   },
-
-  project_status: {
-    type: String,
-    required: false,
-  },
-
+  
   schedule_link: {
     type: String,
     required: true,
