@@ -1,10 +1,18 @@
-const Joi = require("joi");
+const Joi = require('joi');
 
 const departmentValidations = {
   createOrUpdateDepartmentValidator: {
     body: Joi.object({
       title: Joi.string().min(2).max(30).required(),
-      active_status :Joi.boolean().required(),
+      active_status: Joi.boolean().required(),
+      access_token: Joi.string().required(),
+    }),
+  },
+  updateDepartmentValidator: {
+    body: Joi.object({
+      id: Joi.string().required(),
+      title: Joi.string().min(2).max(30).required(),
+      active_status: Joi.boolean().required(),
       access_token: Joi.string().required(),
     }),
   },
