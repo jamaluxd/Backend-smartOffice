@@ -1,8 +1,5 @@
 const jwt = require('jsonwebtoken');
-<<<<<<< HEAD
-=======
 
->>>>>>> 561a4499d6046ff8f4431ec52a5403469da8399d
 const checkLoginNew = async(req, res, next) => {
     try {
         // const token = req.cookies.authorization;
@@ -26,9 +23,5 @@ const checkLoginNew = async(req, res, next) => {
             message: 'Token unavailable',
         });
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 561a4499d6046ff8f4431ec52a5403469da8399d
 };
 module.exports = checkLoginNew;
