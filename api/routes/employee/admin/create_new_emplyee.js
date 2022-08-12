@@ -1,42 +1,42 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const multer = require('multer');
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './api/assets/employee_profile_images/');
-  },
-  filename: function (req, file, cb) {
-    cb(
-      null,
-      ~~(Math.random() * 999999) +
-        '_' +
-        Date.now().toString() +
-        '_' +
-        file.originalname
-    );
-  },
-});
-const filefilter = (req, file, cb) => {
-  // reject a file
-  if (
-    file.mimetype === 'image/jepg' ||
-    file.mimetype === 'image/png'
-  ) {
-    cb(null, true);
-  }
-  // accept a file
-  else {
-    cb(null, false);
-  }
-};
-const upload = multer({
-  storage: storage,
-  limits: {
-    fileSize: 1024 * 1024 * 5,
-  },
-  filefilter: filefilter,
-});
+// const multer = require('multer');
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, './api/assets/employee_profile_images/');
+//   },
+//   filename: function (req, file, cb) {
+//     cb(
+//       null,
+//       ~~(Math.random() * 999999) +
+//         '_' +
+//         Date.now().toString() +
+//         '_' +
+//         file.originalname
+//     );
+//   },
+// });
+// const filefilter = (req, file, cb) => {
+//   // reject a file
+//   if (
+//     file.mimetype === 'image/jepg' ||
+//     file.mimetype === 'image/png'
+//   ) {
+//     cb(null, true);
+//   }
+//   // accept a file
+//   else {
+//     cb(null, false);
+//   }
+// };
+// const upload = multer({
+//   storage: storage,
+//   limits: {
+//     fileSize: 1024 * 1024 * 5,
+//   },
+//   filefilter: filefilter,
+// });
 
 const {
   validate,
@@ -53,10 +53,10 @@ const Employee = require('../../../models/employee_schema');
 
 router.post(
   '/',
-  // validate(employeeValidations.createOrUpdateEmployeeValidator),
+  validate(employeeValidations.createOrUpdateEmployeeValidator),
   checkLogin,
   checkAdmin,
-  upload.single('employeeImage'),
+  // upload.single('employeeImage'),
   async (req, res) => {
     try {
       const cleckExistingEmployee = await Employee.findOne({
@@ -77,7 +77,7 @@ router.post(
           description: req.body.description,
           password: hashedPassword,
           admin: req.body.admin,
-          image: req.file.path,
+          // image: req.file.path,
           active_status: true,
         });
         const newEmployee = await employee.save();
