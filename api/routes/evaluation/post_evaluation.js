@@ -5,6 +5,7 @@ const router = express.Router();
 const createEvaluation = async (req, res, next) => {
 
     req.body.created_at = new Date();
+    req.body.evaluator_id= req.id;
     const evaluated_data = new Evaluation(req.body);
     console.log("Evaluated data are", evaluated_data);
 
