@@ -12,16 +12,37 @@ router.post('/', checkLogin, async (req, res) => {
   try {
     const cleckExistingProjects = await Project.findById(
       req.body.project_id
-    )
-      .populate({ path: 'current_status_id', select: 'title' })
-      .populate({
-        path: 'assign_members.assigned_employee_id',
-        select: 'name',
-      })
-      .populate({
-        path: 'assign_members.assigned_project_role_id',
-        select: 'title',
-      });
+    );
+
+    for (
+      let j = 0;
+      j < cleckExistingProjects.assign_members.length;
+      j++
+    ) {
+      const findEmployeeNameById = await Employee.findById(
+        cleckExistingProjects.assign_members[j].assigned_employee_id,
+        'name'
+      );
+
+      const findRoleTitleById = await Role.findById(
+        cleckExistingProjects.assign_members[j]
+          .assigned_project_role_id,
+        'title'
+      );
+
+      cleckExistingProjects.assign_members[j].assigned_employee_name =
+        findEmployeeNameById.name;
+
+      cleckExistingProjects.assign_members[
+        j
+      ].assigned_project_role_title = findRoleTitleById.title;
+    }
+
+    const findStatusTitleById = await Status.findById(
+      cleckExistingProjects.current_status_id,
+      'title'
+    );
+    cleckExistingProjects.project_status = findStatusTitleById.title;
 
     res.status(200).json({
       status: 200,
