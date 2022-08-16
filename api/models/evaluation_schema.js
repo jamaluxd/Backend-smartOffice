@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
 
 const EvaluationSchema = new mongoose.Schema({
+    evaluator_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'employee',
+        required: true,
+    },
+
     employee_id: {
         type: String,
         required: true,

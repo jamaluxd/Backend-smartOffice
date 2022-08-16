@@ -56,7 +56,7 @@ const showSingleProjectDetailsRouter = require('./api/routes/project/user/show_s
 const deleteProjectRouter = require('./api/routes/project/user/delete_project.js');
 const updateProjectBasicInfoRouter = require('./api/routes/project/user/project_update_basic_info.js');
 // Evaluation
-const postEvaluation = require('./api/routes/evaluation/post_evaluation');
+const postEvaluation = require('./api/routes/evaluation/user/post_evaluation.js');
 //
 
 // API Links
@@ -188,7 +188,7 @@ app.use(
 );
 
 // Evaluation
-app.use('/api/routes/evaluation/createEvaluation', postEvaluation);
+app.use('/api/routes/evaluation/user/createEvaluation', postEvaluation);
 //
 
 module.exports = app;

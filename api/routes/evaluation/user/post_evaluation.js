@@ -1,11 +1,15 @@
 const express = require('express');
-const { Evaluation } = require('../../models/evaluation_schema');
+const { Evaluation } = require('../../../models/evaluation_schema');
 const router = express.Router();
+// Middlewares
+const checkLogin = require('../../../middlewares/checkLogin');
+// const checkAdmin = require('../../../middlewares/checkIsAdmin.js');
 
 const createEvaluation = async (req, res, next) => {
 
     req.body.created_at = new Date();
-    req.body.evaluator_id= req.id;
+    req.body.evaluator_id = req.id;
+    console.log(req.id);
     const evaluated_data = new Evaluation(req.body);
     console.log("Evaluated data are", evaluated_data);
 
@@ -69,7 +73,7 @@ const deleteEvaluationByEmployeeId = async (req, res) => {
 };
 
 router.route('/')
-    .post(createEvaluation)
+    .post(checkLogin, createEvaluation)
     .get(showAllEvaluation)
 
 router.route('/:id')
