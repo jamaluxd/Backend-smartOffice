@@ -19,19 +19,6 @@ router.post('/', checkLogin, async (req, res) => {
       .populate({ path: 'department_id', select: 'title' })
       .populate({ path: 'designation_id', select: 'title' });
 
-    // for (let i = 0; i < ShowEmployeeList.length; i++) {
-    //   const findDepartmentNameById = await Department.findById(
-    //     ShowEmployeeList[i].department_id,
-    //     'title'
-    //   );
-    //   ShowEmployeeList[i].department = findDepartmentNameById.title;
-    //   const findDesignationNameById = await Designation.findById(
-    //     ShowEmployeeList[i].designation_id,
-    //     'title'
-    //   );
-    //   ShowEmployeeList[i].designation = findDesignationNameById.title;
-    // }
-
     if (ShowEmployeeList != null) {
       res.status(200).json({
         status: 200,
