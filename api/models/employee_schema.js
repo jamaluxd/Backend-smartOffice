@@ -1,65 +1,71 @@
-const mongoose = require('mongoose');
-
-mongoose;
+const mongoose = require("mongoose");
 
 const EmployeeSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
+    name: {
+        type: String,
+        required: true,
+    },
 
-  department_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'department',
-    required: true,
-  },
+    department_id: {
+        type: String,
+        required: true,
+    },
 
-  designation_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'designation',
-    required: true,
-  },
+    department: {
+        type: String,
+        required: false,
+    },
 
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
+    designation_id: {
+        type: String,
+        required: true,
+    },
 
-  contect_number: {
-    type: String,
-    required: true,
-  },
+    designation: {
+        type: String,
+        required: false,
+    },
 
-  address: {
-    type: String,
-    required: true,
-  },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
 
-  description: {
-    type: String,
-    required: true,
-  },
+    contect_number: {
+        type: String,
+        required: true,
+    },
 
-  // image: {
-  //     type: String,
-  //     required: false,
-  // },
+    address: {
+        type: String,
+        required: true,
+    },
 
-  password: {
-    type: String,
-    required: true,
-  },
+    description: {
+        type: String,
+        required: true,
+    },
 
-  admin: {
-    type: Boolean,
-    required: true,
-  },
+    // image: {
+    //     type: String,
+    //     required: false,
+    // },
 
-  active_status: {
-    type: Boolean,
-    required: true,
-  },
+    password: {
+        type: String,
+        required: true,
+    },
+
+    admin: {
+        type: Boolean,
+        required: true,
+    },
+
+    active_status: {
+        type: Boolean,
+        required: true,
+    },
 });
 
-module.exports = mongoose.model('employee', EmployeeSchema);
+module.exports = mongoose.model("employee", EmployeeSchema);

@@ -1,21 +1,17 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const {
-  validate,
-  ValidationError,
-  Joi,
-} = require('express-validation');
+const { validate, ValidationError, Joi } = require("express-validation");
 //Validations
-const departmentValidations = require('../../../validations/department_validation');
+const departmentValidations = require("../../../validations/department_validation");
 // Middlewares
-const checkLogin = require('../../../middlewares/checkLogin.js');
-const checkAdmin = require('../../../middlewares/checkIsAdmin.js');
+const checkLogin = require("../../../middlewares/checkLogin.js");
+const checkAdmin = require("../../../middlewares/checkIsAdmin.js");
 // Models
-const Department = require('../../../models/department_schema.js');
+const Department = require("../../../models/department_schema.js");
 
 router.post(
-  '/',
-  validate(departmentValidations.updateDepartmentValidator),
+  "/",
+  validate(departmentValidations.createOrUpdateDepartmentValidator),
   checkLogin,
   checkAdmin,
   async (req, res) => {
@@ -26,7 +22,7 @@ router.post(
       );
       res.status(200).json({
         status: 200,
-        message: 'Department updated successfully',
+        message: "Department updated successfully",
         updateDesignation: updateDepartment,
       });
     } catch (err) {

@@ -1,34 +1,31 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 // Middlewares
-const checkLogin = require('../../../middlewares/checkLogin.js');
+const checkLogin = require("../../../middlewares/checkLogin.js");
 // Models
-const Employee = require('../../../models/employee_schema.js');
-const Department = require('../../../models/department_schema.js');
-const Designation = require('../../../models/designation_schema.js');
+const Employee = require("../../../models/employee_schema.js");
+const Department = require("../../../models/department_schema.js");
+const Designation = require("../../../models/designation_schema.js");
 
-router.post('/', checkLogin, async (req, res) => {
+router.post("/", checkLogin, async (req, res) => {
   try {
-    const ShowEmployeeList = await Employee.find(
-      {
-        active_status: true,
-      },
-      {}
-    )
-      .populate({ path: 'department_id', select: 'title' })
-      .populate({ path: 'designation_id', select: 'title' });
-
+    const ShowEmployeeList = await Employee.find({
+      active_status: true
+    },{
+      
+    });
+    
     if (ShowEmployeeList != null) {
       res.status(200).json({
         status: 200,
-        message: 'List is found',
+        message: "List is found",
         body: ShowEmployeeList,
       });
     } else {
       res.status(409).json({
         status: 409,
-        message: 'Users not found',
+        message: "Users not found",
         body: ShowEmployeeList,
       });
     }
