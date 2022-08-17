@@ -1,8 +1,14 @@
 const mongoose = require("mongoose");
 
 const EvaluationSchema = new mongoose.Schema({
+    evaluator_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'employee',
+        required: true,
+    },
+
     employee_id: {
-        type: Number,
+        type: String,
         required: true,
     },
 
@@ -125,6 +131,10 @@ const EvaluationSchema = new mongoose.Schema({
 
     keep_equipment_good: {
         type: Number,
+        required: true,
+    },
+    created_at: {
+        type: Date,
         required: true,
     }
 

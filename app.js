@@ -57,8 +57,9 @@ const deleteProjectRouter = require('./api/routes/project/user/delete_project.js
 const updateProjectBasicInfoRouter = require('./api/routes/project/user/project_update_basic_info.js');
 const updateOwnEmployeeInfoRouter = require('./api/routes/employee/user/update_own_employee_info.js');
 const changePasswordRouter = require('./api/routes/employee/user/change_password.js');
+
 // Evaluation
-const postEvaluation = require('./api/routes/evaluation/post_evaluation');
+const postEvaluation = require('./api/routes/evaluation/user/post_evaluation.js');
 //
 
 // API Links
@@ -196,7 +197,7 @@ app.use(
  app.use('/api/routes/employee/user/changePassword',changePasswordRouter);
 
 // Evaluation
-app.use('/api/routes/evaluation/createEvaluation', postEvaluation);
+app.use('/api/routes/evaluation/user/createEvaluation', postEvaluation);
 //
 
 module.exports = app;
