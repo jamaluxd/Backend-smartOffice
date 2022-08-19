@@ -4,9 +4,6 @@ const router = express.Router();
 const checkLogin = require('../../../middlewares/checkLogin.js');
 // Models
 const Project = require('../../../models/project_schema.js');
-const Employee = require('../../../models/employee_schema');
-const Status = require('../../../models/status_schema');
-const Role = require('../../../models/role_schema');
 
 router.post('/', checkLogin, async (req, res) => {
   try {
