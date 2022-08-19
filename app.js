@@ -54,9 +54,11 @@ const showAllProjectsRouter = require('./api/routes/project/user/show_all_projec
 const moveTaskFromStateToStateRouter = require('./api/routes/project/user/move_task_from_state_to_state.js');
 const showSingleProjectDetailsRouter = require('./api/routes/project/user/show_single_project_deatils.js');
 const deleteProjectRouter = require('./api/routes/project/user/delete_project.js');
-
+const updateProjectBasicInfoRouter = require('./api/routes/project/user/project_update_basic_info.js');
+const updateOwnEmployeeInfoRouter = require('./api/routes/employee/user/update_own_employee_info.js');
+const changePasswordRouter = require('./api/routes/employee/user/change_password.js');
 // Evaluation
-const postEvaluation = require("./api/routes/evaluation/post_evaluation");
+const postEvaluation = require('./api/routes/evaluation/post_evaluation');
 //
 
 // API Links
@@ -182,8 +184,19 @@ app.use(
   deleteProjectRouter
 );
 
+app.use(
+  '/api/routes/project/user/updateProjectBasicInfo',
+  updateProjectBasicInfoRouter
+);
+app.use(
+  '/api/routes/employee/user/updateOwnEmployeeInfo',
+  updateOwnEmployeeInfoRouter
+);
+
+ app.use('/api/routes/employee/user/changePassword',changePasswordRouter);
+
 // Evaluation
-app.use("/api/routes/evaluation/createEvaluation", postEvaluation);
+app.use('/api/routes/evaluation/createEvaluation', postEvaluation);
 //
 
 module.exports = app;
