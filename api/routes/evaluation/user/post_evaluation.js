@@ -29,7 +29,7 @@ const showAllEvaluation = async (req, res) => {
     const id = req.id;
     console.log("Evaluator ID from token",id);
     const show_all_evaluated_data = await Evaluation.find({
-        // evaluator_id : id
+        evaluator_id : id
     })
     // .populate("employee_id", "name")
     .populate({ path: 'employee_id', select: 'name' });
@@ -105,13 +105,12 @@ const showAllEvaluation = async (req, res) => {
 
 router.route('/')
     .post(checkLogin, createEvaluation)
-    
 
     router.route('/showData')
     .post(checkLogin, showAllEvaluation)
 
 
-// router for show evaluation by id, update evaluation and delete evaluation    
+// router for show evaluation by id, update evaluation and delete evaluation
 // router.route('/:id')
 //     .get(showEvaluationByEvaluatorId)
 //     .put(updateEvaluationByEmployeeId)
