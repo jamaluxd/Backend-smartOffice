@@ -8,7 +8,8 @@ const EvaluationSchema = new mongoose.Schema({
     },
 
     employee_id: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'employee',
         required: true,
     },
 
