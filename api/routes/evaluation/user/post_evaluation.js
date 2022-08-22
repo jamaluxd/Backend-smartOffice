@@ -26,11 +26,32 @@ const createEvaluation = async (req, res, next) => {
 };
 
 const showAllEvaluation = async (req, res) => {
+    const id = req.id;
+    console.log("Evaluator ID from token",id);
     const show_all_evaluated_data = await Evaluation.find({
-        evaluator_id: req.id
-    }).sort({ employee_id: 1 });
+        // evaluator_id : id
+    })
+    // .populate("employee_id", "name")
+    .populate({ path: 'employee_id', select: 'name' });
     res.send(show_all_evaluated_data);
+    // console.log(show_all_evaluated_data);
 };
+
+// Show evaluation by employee ID
+//
+// const showEvaluationByEvaluatorId = async (req, res) => {
+//     const evaluator_id = req.id;
+//     console.log(`Evaluator id are: ${evaluator_id}`);
+
+//     try {
+//         const evaluator = await Evaluation.findById(evaluator_id);
+//         if (!evaluator) return res.status(404).send("Invalid evaluator Id");
+//         res.send(evaluator);
+
+//     } catch (err) {
+//         return res.status(404).send("Id not found!", err);
+//     }
+// };
 
 // evaluator_id comes from database and req.id comes from token
 
@@ -84,12 +105,15 @@ const showAllEvaluation = async (req, res) => {
 
 router.route('/')
     .post(checkLogin, createEvaluation)
-    .get(showAllEvaluation)
+    
+
+    router.route('/showData')
+    .post(checkLogin, showAllEvaluation)
 
 
 // router for show evaluation by id, update evaluation and delete evaluation    
 // router.route('/:id')
-//     .get(showEvaluationByEmployeeId)
+//     .get(showEvaluationByEvaluatorId)
 //     .put(updateEvaluationByEmployeeId)
 //     .delete(deleteEvaluationByEmployeeId)
 
