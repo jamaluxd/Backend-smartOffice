@@ -27,12 +27,20 @@ const createEvaluation = async (req, res, next) => {
 
 const showAllEvaluation = async (req, res) => {
     const id = req.id;
-    console.log("Evaluator ID from token",id);
+    console.log("Evaluator ID from token", id);
     const show_all_evaluated_data = await Evaluation.find({
-        evaluator_id : id
+        evaluator_id: id
     })
-    // .populate("employee_id", "name")
-    .populate({ path: 'employee_id', select: 'name' });
+        // .populate("employee_id", "name")
+        .populate({ path: 'employee_id', select: 'name' });
+    console.log("Show all evaluated data", show_all_evaluated_data)
+
+    // var json = [];
+    // var tmp;
+    // for (var i=0; i<show_all_evaluated_data.length; i++){
+
+    // }
+    //
     res.send(show_all_evaluated_data);
     // console.log(show_all_evaluated_data);
 };
@@ -106,7 +114,7 @@ const showAllEvaluation = async (req, res) => {
 router.route('/')
     .post(checkLogin, createEvaluation)
 
-    router.route('/showData')
+router.route('/showData')
     .post(checkLogin, showAllEvaluation)
 
 
