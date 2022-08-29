@@ -1,6 +1,6 @@
 const express = require('express');
-const { Evaluation } = require('../../../models/evaluation_schema');
 const router = express.Router();
+const { Evaluation } = require('../../../models/evaluation_schema');
 // Middlewares
 const checkLogin = require('../../../middlewares/checkLogin');
 // const checkAdmin = require('../../../middlewares/checkIsAdmin.js');
@@ -33,10 +33,11 @@ const showAllEvaluation = async (req, res) => {
     })
         // .populate("employee_id", "name")
         .populate({ path: 'employee_id', select: 'name' });
-    console.log("Show all evaluated data", show_all_evaluated_data)
+    // console.log("Show all evaluated data", show_all_evaluated_data)
 
     // var json = [];
     // var tmp;
+    // console.log("Length of all evaluated data are:", show_all_evaluated_data.length);
     // for (var i=0; i<show_all_evaluated_data.length; i++){
 
     // }
