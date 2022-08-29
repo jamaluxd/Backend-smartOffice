@@ -60,6 +60,8 @@ const changePasswordRouter = require('./api/routes/employee/user/change_password
 
 // Evaluation
 const postEvaluation = require('./api/routes/evaluation/user/post_evaluation.js');
+//Options
+const option = require('./api/routes/evaluation/user/option');
 //
 
 // API Links
@@ -198,6 +200,8 @@ app.use(
 
 // Evaluation
 app.use('/api/routes/evaluation/user/createEvaluation', postEvaluation);
+//Option
+app.use('/api/routes/evaluation/user/options', option);
 //
 
 module.exports = app;

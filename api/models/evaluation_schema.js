@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { option } = require('./evaluation_option_schema')
 
 const EvaluationSchema = new mongoose.Schema({
     evaluator_id: {
@@ -14,124 +15,148 @@ const EvaluationSchema = new mongoose.Schema({
     },
 
     employee_autonomous: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     employee_humble: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     employee_passionate: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     employee_honest: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     employee_relible: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     employee_creative: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     employee_confident: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     employee_eager: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     employee_positive: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     //-----------------
 
     developing_part: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     spoke_up: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     activity_vocal: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     information_shared: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     quick_share_issues: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     helped_others: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     skill_improved: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     developing_on_schedule: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     leadership_ability: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     punctional_employee: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     frequently_dose_off: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     hearts_someone: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     unnecessary_talks: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     unnecessary_activities: {
-        type: Number,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
 
     keep_equipment_good: {
-        type: Number,
+         type: mongoose.Schema.Types.ObjectId,
+        ref: 'option',
         required: true,
     },
     created_at: {
