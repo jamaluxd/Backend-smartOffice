@@ -32,7 +32,56 @@ const showAllEvaluation = async (req, res) => {
         evaluator_id: id
     })
         // .populate("employee_id", "name")
-        .populate({ path: 'employee_id', select: 'name' });
+        .populate({ path: 'employee_id', select: 'name' })
+        //
+        .populate({ path: 'employee_autonomous', select: 'title'})
+        //
+        .populate({ path: 'employee_humble', select: 'title'})
+        //
+        .populate({ path: 'employee_passionate', select: 'title'})
+        //
+        .populate({ path: 'employee_honest', select: 'title'})
+        //
+        .populate({ path: 'employee_relible', select: 'title' })
+        //
+        .populate({ path: 'employee_creative', select: 'title' })
+        //
+        .populate({ path: 'employee_confident', select: 'title' })
+        //
+        .populate({ path: 'employee_eager', select: 'title' })
+        //
+        .populate({ path: 'employee_positive', select: 'title' })
+        //
+        .populate({ path: 'developing_part', select: 'title' })
+        //
+        .populate({ path: 'spoke_up', select: 'title' })
+        //
+        .populate({ path: 'activity_vocal', select: 'title' })
+        //
+        .populate({ path: 'information_shared', select: 'title' })
+        //
+        .populate({ path: 'quick_share_issues', select: 'title' })
+        //
+        .populate({ path: 'helped_others', select: 'title' })
+        //
+        .populate({ path: 'skill_improved', select: 'title' })
+        //
+        .populate({ path: 'developing_on_schedule', select: 'title' })
+        //
+        .populate({ path: 'leadership_ability', select: 'title' })
+        //
+        .populate({ path: 'punctional_employee', select: 'title' })
+        //
+        .populate({ path: 'frequently_dose_off', select: 'title' })
+        //
+        .populate({ path: 'hearts_someone', select: 'title' })
+        //
+        .populate({ path: 'unnecessary_talks', select: 'title' })
+        //
+        .populate({ path: 'unnecessary_activities', select: 'title' })
+        //
+        .populate({ path: 'keep_equipment_good', select: 'title' })
+        
     // console.log("Show all evaluated data", show_all_evaluated_data)
 
     // var json = [];
