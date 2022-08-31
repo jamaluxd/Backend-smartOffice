@@ -8,7 +8,7 @@ const checkLogin = require('../../../middlewares/checkLogin');
 
 const showOption = async ( req, res ) => {
     const show_all_options = await Option.find();
-    console.log(show_all_options);
+    // console.log(show_all_options);
     res.send(show_all_options);
 };
 
