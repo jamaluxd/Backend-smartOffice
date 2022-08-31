@@ -155,7 +155,7 @@ const EvaluationSchema = new mongoose.Schema({
     },
 
     keep_equipment_good: {
-         type: mongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'option',
         required: true,
     },

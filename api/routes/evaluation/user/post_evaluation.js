@@ -1,4 +1,5 @@
 const express = require('express');
+// import alert from 'alert';
 const router = express.Router();
 const { Evaluation } = require('../../../models/evaluation_schema');
 // Middlewares
@@ -6,23 +7,37 @@ const checkLogin = require('../../../middlewares/checkLogin');
 // const checkAdmin = require('../../../middlewares/checkIsAdmin.js');
 
 const createEvaluation = async (req, res, next) => {
-    req.body.created_at = new Date();
-    req.body.evaluator_id = req.id;
-    console.log(req.id);
-    const evaluated_data = new Evaluation(req.body);
-    console.log("Evaluated data are", evaluated_data);
+    let evaluated_employees = await Evaluation.findOne({employee_id: req.body.employee_id});
 
-    try {
-        await evaluated_data.save();
-        return res.status(201).send({
-            "status": 201,
-            "message": "Evaluated successfully!",
-            "body": evaluated_data
+    console.log("Evaluated employees are:----->>>>", evaluated_employees);
+    
+    if (evaluated_employees) {
+        return res.status(404).send({
+            "status": 404,
+            "message": "This Employee already Evaluiated!",
+            "evaluated_employees": evaluated_employees,
         });
-    } catch (err) {
-        return res.status(400).send("Sorry! Something went wrong!");
-        next(err);
+
+    } else{
+        req.body.created_at = new Date();
+        req.body.evaluator_id = req.id;
+        // console.log(req.id);
+        const evaluated_data = new Evaluation(req.body);
+        // console.log("Evaluated data are", evaluated_data);
+
+        try {
+            await evaluated_data.save();
+            return res.status(201).send({
+                "status": 201,
+                "message": "Evaluated successfully!",
+                "body": evaluated_data
+            });
+        } catch (err) {
+            return res.status(400).send("Sorry! Something went wrong!");
+            next(err);
+        }
     }
+
 };
 
 const showAllEvaluation = async (req, res) => {
