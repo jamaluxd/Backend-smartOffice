@@ -7,18 +7,18 @@ const checkLogin = require('../../../middlewares/checkLogin');
 // const checkAdmin = require('../../../middlewares/checkIsAdmin.js');
 
 const createEvaluation = async (req, res, next) => {
-    let evaluated_employees = await Evaluation.findOne({employee_id: req.body.employee_id});
+    let evaluated_employees = await Evaluation.findOne({ employee_id: req.body.employee_id });
 
     console.log("Evaluated employees are:----->>>>", evaluated_employees);
-    
+
     if (evaluated_employees) {
-        return res.status(404).send({
-            "status": 404,
+        return res.status(400).send({
+            "status": 400,
             "message": "This Employee already Evaluiated!",
-            "evaluated_employees": evaluated_employees,
+            // "evaluated_employees": evaluated_employees,
         });
 
-    } else{
+    } else {
         req.body.created_at = new Date();
         req.body.evaluator_id = req.id;
         // console.log(req.id);
@@ -49,13 +49,13 @@ const showAllEvaluation = async (req, res) => {
         // .populate("employee_id", "name")
         .populate({ path: 'employee_id', select: 'name' })
         //
-        .populate({ path: 'employee_autonomous', select: 'title'})
+        .populate({ path: 'employee_autonomous', select: 'title' })
         //
-        .populate({ path: 'employee_humble', select: 'title'})
+        .populate({ path: 'employee_humble', select: 'title' })
         //
-        .populate({ path: 'employee_passionate', select: 'title'})
+        .populate({ path: 'employee_passionate', select: 'title' })
         //
-        .populate({ path: 'employee_honest', select: 'title'})
+        .populate({ path: 'employee_honest', select: 'title' })
         //
         .populate({ path: 'employee_relible', select: 'title' })
         //
@@ -96,15 +96,8 @@ const showAllEvaluation = async (req, res) => {
         .populate({ path: 'unnecessary_activities', select: 'title' })
         //
         .populate({ path: 'keep_equipment_good', select: 'title' })
-        
+
     // console.log("Show all evaluated data", show_all_evaluated_data)
-
-    // var json = [];
-    // var tmp;
-    // console.log("Length of all evaluated data are:", show_all_evaluated_data.length);
-    // for (var i=0; i<show_all_evaluated_data.length; i++){
-
-    // }
     //
     res.send(show_all_evaluated_data);
     // console.log(show_all_evaluated_data);
